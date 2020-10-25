@@ -3,4 +3,9 @@
     <string name="title_home">Home</string>
     <string name="title_goals">Goals</string>
     <string name="title_mood">Mood</string>
+    <string name="set_a_goal">Set a Goal</string>
+    <string name="log_your_mood">Log your mood</string>
+    <string name="set_goal_info">Choose or create a goal that seems important to your treatment that feels achievable to you</string>
+    <string name="mood_info">How Are You Feeling Today?(Use the slider to choose)</string>
+    <string name="mood_continue">Continue</string>
 </resources>
