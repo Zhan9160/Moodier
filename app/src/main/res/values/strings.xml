@@ -8,4 +8,5 @@
     <string name="set_goal_info">Choose or create a goal that seems important to your treatment that feels achievable to you</string>
     <string name="mood_info">How Are You Feeling Today?(Use the slider to choose)</string>
     <string name="mood_continue">Continue</string>
+    <string name="enter_own_goal">Enter your own goal.</string>
 </resources>

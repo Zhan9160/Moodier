@@ -1,6 +1,9 @@
 package com.laurier.joelucy.CP670project;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -11,6 +14,8 @@ import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
 public class MainActivity extends AppCompatActivity {
+
+    private static final String ACTIVITY_NAME ="MAINACTIVITY";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,5 +31,12 @@ public class MainActivity extends AppCompatActivity {
        // NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(navView, navController);
     }
+
+    //go to set goals page
+//    public void get_setgoal_activity(View view){
+//        Intent set_goal_intent = new Intent(MainActivity.this,SetGoalActivity.class);
+//        startActivity(set_goal_intent);
+//        Log.i(ACTIVITY_NAME, "In onCreate()");
+//    }
 
 }
