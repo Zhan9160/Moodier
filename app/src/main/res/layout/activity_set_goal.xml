@@ -44,24 +44,24 @@
             android:id="@+id/textView5"
             android:layout_width="match_parent"
             android:layout_height="71dp"
-            android:text="TextView" />
+            android:text="@string/Goal1" />
 
         <TextView
             android:id="@+id/textView6"
             android:layout_width="match_parent"
             android:layout_height="71dp"
-            android:text="TextView" />
+            android:text="@string/Goal2" />
 
         <TextView
             android:id="@+id/textView3"
             android:layout_width="match_parent"
             android:layout_height="71dp"
-            android:text="TextView" />
+            android:text="@string/Goal3" />
 
         <TextView
             android:id="@+id/textView2"
             android:layout_width="match_parent"
             android:layout_height="71dp"
-            android:text="TextView" />
+            android:text="@string/Goal4" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

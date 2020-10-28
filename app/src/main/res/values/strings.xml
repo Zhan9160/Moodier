@@ -9,4 +9,10 @@
     <string name="mood_info">How Are You Feeling Today?(Use the slider to choose)</string>
     <string name="mood_continue">Continue</string>
     <string name="enter_own_goal">Enter your own goal.</string>
+    <string name="Goal1">Your first goal here.</string>
+    <string name="Goal2">Your second goal</string>
+    <string name="Goal3">Your third goal</string>
+    <string name="Goal4">Your forth goal</string>
+    <string name="enter_own_goal_detail">Enter your goal in the following:</string>
+    <string name="detailOf_your_own_goal">Your goal here</string>
 </resources>

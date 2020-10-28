@@ -9,4 +9,10 @@
     <string name="mood_info">你今天心情好吗？（用滑动轴选择）</string>
     <string name="mood_continue">继续</string>
     <string name="enter_own_goal">输入你自己的目标。</string>
+    <string name="Goal1">第一条目标</string>
+    <string name="Goal2">第二条目标</string>
+    <string name="Goal3">第三条目标</string>
+    <string name="Goal4">第四条目标</string>
+    <string name="enter_own_goal_detail">在下面输入你自己的目标:</string>
+    <string name="detailOf_your_own_goal">在这里输入你的目标</string>
 </resources>
