@@ -33,10 +33,16 @@ public class MainActivity extends AppCompatActivity {
     }
 
     //go to set goals page
-//    public void get_setgoal_activity(View view){
-//        Intent set_goal_intent = new Intent(MainActivity.this,SetGoalActivity.class);
-//        startActivity(set_goal_intent);
-//        Log.i(ACTIVITY_NAME, "In onCreate()");
-//    }
+    public void get_setgoal_activity(View view){
+        Intent set_goal_intent = new Intent(MainActivity.this,SetGoalActivity.class);
+        startActivity(set_goal_intent);
+        Log.i(ACTIVITY_NAME, "In onCreate()");
+    }
+
+    public void get_logmood_activity(View view){
+        Intent log_mood_intent = new Intent(MainActivity.this,LogMoodActivity.class);
+        startActivity(log_mood_intent);
+        Log.i(ACTIVITY_NAME, "In onCreate()");
+    }
 
 }

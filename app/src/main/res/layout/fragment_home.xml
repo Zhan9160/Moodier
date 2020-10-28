@@ -14,7 +14,9 @@
         android:text="@string/set_a_goal"
         app:layout_constraintBaseline_toBaselineOf="@+id/button2"
         app:layout_constraintEnd_toStartOf="@+id/button2"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        android:onClick="get_setgoal_activity"
+        tools:ignore="OnClick" />
 
     <Button
         android:id="@+id/button2"
@@ -24,7 +26,9 @@
         android:text="@string/log_your_mood"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/button"
-        app:layout_constraintTop_toTopOf="@+id/text_home" />
+        app:layout_constraintTop_toTopOf="@+id/text_home"
+        android:onClick="get_logmood_activity"
+        tools:ignore="OnClick" />
 
     <!--    <com.google.android.material.bottomnavigation.BottomNavigationView-->
     <!--        android:id="@+id/nav_view"-->
