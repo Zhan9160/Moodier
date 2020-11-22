@@ -15,4 +15,13 @@
     <string name="Goal4">第四条目标</string>
     <string name="enter_own_goal_detail">在下面输入你自己的目标:</string>
     <string name="detailOf_your_own_goal">在这里输入你的目标</string>
+
+    <string name="Login">登陆</string>
+    <string name="LoginName">用户名</string>
+    <string name="Password">密码</string>
+    <string name="PasswordName">密码</string>
+    <string name="LoginButton">登陆</string>
+
+    <string name="submit">提交</string>
+    <string name="Back">返回</string>
 </resources>

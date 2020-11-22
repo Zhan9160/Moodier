@@ -9,19 +9,22 @@
         android:roundIcon="@drawable/smile1"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".LogMoodActivity"></activity>
-        <activity android:name=".GoalActivity" />
-        <activity android:name=".CreateGoalActivity" />
-        <activity android:name=".SetGoalActivity" />
-        <activity
-            android:name=".MainActivity"
-            android:label="@string/app_name">
+        <activity android:name=".ListMoodRecord"></activity>
+        <activity android:name=".WriteMood" />
+        <activity android:name=".LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".LogMoodActivity" />
+        <activity android:name=".GoalActivity" />
+        <activity android:name=".CreateGoalActivity" />
+        <activity android:name=".SetGoalActivity" />
+        <activity
+            android:name=".MainActivity"
+            android:label="@string/app_name" />
     </application>
 
 </manifest>
