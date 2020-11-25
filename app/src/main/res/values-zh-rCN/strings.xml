@@ -24,4 +24,6 @@
 
     <string name="submit">提交</string>
     <string name="Back">返回</string>
+    <string name="view_mood_record">查看心情记录</string>
+    <string name="clear_record">清空记录</string>
 </resources>

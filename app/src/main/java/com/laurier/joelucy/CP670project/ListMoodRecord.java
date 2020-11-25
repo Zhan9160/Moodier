@@ -14,11 +14,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.SeekBar;
 import android.widget.TextView;
-
-import com.laurier.joelucy.CP670project.ui.MoodDatabaseHelper;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -26,23 +27,45 @@ public class ListMoodRecord extends AppCompatActivity {
 
     private static final String ACTIVITY_NAME = "ListMoodRecord";
     private EditText textInput;
+    Button submit;
     private ArrayList<String> list; //store mood message detail
     SQLiteDatabase db;
     MoodDatabaseHelper db_helper;
+    Cursor cursor;
+    TextView text_feel;
+    MoodAdapter messageAdapter;
+    ListView listView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_mood_record);
 
-        ListView listView = findViewById(R.id.recyclerView_moodRecord);
+        listView = findViewById(R.id.recyclerView_moodRecord);
         list = new ArrayList<>();
+//        Toast.makeText(ListMoodRecord.this, ">>>>>",
+//                Toast.LENGTH_SHORT).show();
 
-        final MoodAdapter messageAdapter =new MoodAdapter( this );
-        listView.setAdapter (messageAdapter);
-        textInput = findViewById(R.id.write_mood);
+        messageAdapter =new MoodAdapter( this );
+        listView.setAdapter(messageAdapter);
+
+        LayoutInflater factory = LayoutInflater.from(ListMoodRecord.this);
+        View layout = factory.inflate(R.layout.activity_write_mood, null);
+//        TextView textInput = (TextView) layout.findViewById(R.id.write_mood);
+        textInput = (EditText)layout.findViewById(R.id.write_mood);
+        submit = (Button)layout.findViewById(R.id.submit_new_mood);
+
+//        LayoutInflater log_mood_activity = LayoutInflater.from(ListMoodRecord.this);
+//        View log_mood_layout = factory.inflate(R.layout.activity_log_mood, null);
+//        text_feel = (TextView)log_mood_layout.findViewById(R.id.mood_value);
+
+//        Toast.makeText(ListMoodRecord.this, textInput.getText(),
+//                Toast.LENGTH_SHORT).show();
+
+        //textInput = findViewById(R.id.write_mood);
+       // Log.i(ACTIVITY_NAME,"" + textInput);
         //Button sendButton = findViewById(R.id.sendButton);
-        findViewById(R.id.submit_new_mood).setOnClickListener(new View.OnClickListener(){
-
+        //findViewById(R.id.submit_new_mood).setOnClickListener(new View.OnClickListener(){
+        submit.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
                 String message = textInput.getText().toString();
                 list.add(message);
@@ -58,7 +81,7 @@ public class ListMoodRecord extends AppCompatActivity {
         db_helper = new MoodDatabaseHelper(this);
         //gets a writeable database
         db = db_helper.getReadableDatabase();
-        Cursor cursor = db.rawQuery("select * from " + MoodDatabaseHelper.TABLE_NAME,null);
+        cursor = db.rawQuery("select * from " + MoodDatabaseHelper.TABLE_NAME,null);
         cursor.moveToFirst();
         //reading from db file
         while (!cursor.isAfterLast()) {
@@ -71,12 +94,34 @@ public class ListMoodRecord extends AppCompatActivity {
             list.add(cursor.getString(1));
             cursor.moveToNext();
         }
+        //cursor.close();
+    }
+    protected void onDestroy() {
+        super.onDestroy();
         cursor.close();
+        db_helper.close();
+        db.close();
     }
 
+
     public void return_to_main(View v){
-        Intent intent_to_main = new Intent(ListMoodRecord.this,LogMoodActivity.class);
+        Intent intent_to_main = new Intent(ListMoodRecord.this,MainActivity.class);
         startActivity(intent_to_main);
+    }
+
+    public void clear_record(View v){
+        listView.setAdapter(null);
+//        SQLiteDatabase.execSQL("DELETE FROM CUSTOMERS");
+        db_helper.onUpgrade(db,4,5);
+
+//        if (list.size() > 0) {
+//            //list.removeAll(list);
+//            list.clear();
+//            messageAdapter.notifyDataSetChanged();
+//            listView.setAdapter(messageAdapter);
+//
+//
+//        }
     }
 
     private class MoodAdapter extends ArrayAdapter<String> {
