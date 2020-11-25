@@ -8,14 +8,10 @@
 
     <EditText
         android:id="@+id/write_mood"
-        android:layout_width="377dp"
-        android:layout_height="179dp"
-        android:layout_marginStart="34dp"
-        android:layout_marginEnd="34dp"
-        android:layout_marginBottom="25dp"
+        android:layout_width="match_parent"
+        android:layout_height="140dp"
+        android:layout_marginBottom="28dp"
         android:ems="10"
-        android:inputType="textPersonName"
-        android:text="@string/log_your_mood"
         app:layout_constraintBottom_toTopOf="@+id/submit_new_mood"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -23,29 +19,50 @@
 
     <TextView
         android:id="@+id/textView4"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="100dp"
-        android:layout_marginEnd="49dp"
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="150dp"
+        android:layout_marginEnd="5dp"
         android:text="@string/log_your_mood"
         app:layout_constraintBottom_toTopOf="@+id/write_mood"
-        app:layout_constraintEnd_toEndOf="@+id/write_mood"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/submit_new_mood"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="145dp"
-        android:layout_marginEnd="144dp"
-        android:layout_marginBottom="330dp"
-        android:onClick="go_to_moodhistory"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginBottom="19dp"
         android:text="@string/submit"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/write_mood"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/submit_new_mood2"
+        app:layout_constraintEnd_toEndOf="@+id/submit_new_mood2"
+        app:layout_constraintStart_toStartOf="@+id/submit_new_mood2"
         app:layout_constraintTop_toBottomOf="@+id/write_mood" />
+
+    <Button
+        android:id="@+id/submit_new_mood2"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginBottom="19dp"
+        android:onClick="go_to_moodhistory"
+        android:text="@string/view_mood_record"
+        app:layout_constraintBottom_toTopOf="@+id/back"
+        app:layout_constraintEnd_toEndOf="@+id/back"
+        app:layout_constraintStart_toStartOf="@+id/back"
+        app:layout_constraintTop_toBottomOf="@+id/submit_new_mood" />
+
+    <Button
+        android:id="@+id/back"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginBottom="368dp"
+        android:onClick="go_to_moodhistory"
+        android:text="@string/Back"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/submit_new_mood2" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

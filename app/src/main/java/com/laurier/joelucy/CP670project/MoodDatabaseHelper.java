@@ -1,13 +1,13 @@
-package com.laurier.joelucy.CP670project.ui;
+package com.laurier.joelucy.CP670project;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-    public class MoodDatabaseHelper extends SQLiteOpenHelper {
+public class MoodDatabaseHelper extends SQLiteOpenHelper {
 
-    private static final String DATABASE_NAME = "Messages.db";
-    private static final int VERSION_NUM = 0 ;
+    private static final String DATABASE_NAME = "Modes.db";
+    private static final int VERSION_NUM = 3 ;
     public static final String TABLE_NAME = "message";
     public static final String KEY_ID = "ID" ;
     public static final String KEY_MESSAGE = "message" ;
