@@ -7,17 +7,41 @@
     tools:context=".CreateGoalActivity">
 
     <EditText
-        android:id="@+id/editTextTextMultiLine"
-        android:layout_width="0dp"
-        android:layout_height="231dp"
-        android:layout_marginStart="22dp"
-        android:layout_marginTop="90dp"
-        android:layout_marginEnd="22dp"
+        android:id="@+id/create_goal"
+        android:layout_width="match_parent"
+        android:layout_height="190dp"
+        android:layout_marginStart="6dp"
+        android:layout_marginEnd="6dp"
+        android:layout_marginBottom="64dp"
         android:ems="10"
         android:gravity="start|top"
         android:inputType="textMultiLine"
-        android:text="@string/detailOf_your_own_goal"
+        app:layout_constraintBottom_toTopOf="@+id/submit_new_goal"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView9" />
+
+    <Button
+        android:id="@+id/submit_new_goal"
+        android:layout_width="108dp"
+        android:layout_height="60dp"
+        android:layout_marginBottom="328dp"
+        android:onClick="submit_new_goal"
+        android:text="@string/submit"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/create_goal" />
+
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="21dp"
+        android:layout_marginBottom="21dp"
+        android:text="@string/detailOf_your_own_goal"
+        app:layout_constraintBottom_toTopOf="@+id/create_goal"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -9,7 +9,7 @@
     <EditText
         android:id="@+id/write_mood"
         android:layout_width="match_parent"
-        android:layout_height="140dp"
+        android:layout_height="114dp"
         android:layout_marginBottom="28dp"
         android:ems="10"
         app:layout_constraintBottom_toTopOf="@+id/submit_new_mood"
@@ -20,49 +20,58 @@
     <TextView
         android:id="@+id/textView4"
         android:layout_width="match_parent"
-        android:layout_height="20dp"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="150dp"
-        android:layout_marginEnd="5dp"
+        android:layout_height="36dp"
         android:text="@string/log_your_mood"
         app:layout_constraintBottom_toTopOf="@+id/write_mood"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/progressBar" />
 
     <Button
         android:id="@+id/submit_new_mood"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:layout_marginBottom="19dp"
         android:text="@string/submit"
         app:layout_constraintBottom_toTopOf="@+id/submit_new_mood2"
-        app:layout_constraintEnd_toEndOf="@+id/submit_new_mood2"
-        app:layout_constraintStart_toStartOf="@+id/submit_new_mood2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/write_mood" />
 
     <Button
         android:id="@+id/submit_new_mood2"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:layout_marginBottom="19dp"
         android:onClick="go_to_moodhistory"
         android:text="@string/view_mood_record"
         app:layout_constraintBottom_toTopOf="@+id/back"
-        app:layout_constraintEnd_toEndOf="@+id/back"
-        app:layout_constraintStart_toStartOf="@+id/back"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/submit_new_mood" />
 
     <Button
         android:id="@+id/back"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_marginBottom="368dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="286dp"
         android:onClick="go_to_moodhistory"
         android:text="@string/Back"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/submit_new_mood2" />
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="3dp"
+        android:layout_marginBottom="50dp"
+        app:layout_constraintBottom_toTopOf="@+id/textView4"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

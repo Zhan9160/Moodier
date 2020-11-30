@@ -51,7 +51,7 @@ public class WriteMood extends AppCompatActivity {
         final MoodAdapter messageAdapter = new MoodAdapter(this);
 //        listView.setAdapter(messageAdapter);
 
-        simpleDateFormat = new SimpleDateFormat("yyyy年MM月dd日 HH:mm:ss");// HH:mm:ss
+        simpleDateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");// HH:mm:ss
 //获取当前时间
         date = new Date(System.currentTimeMillis());
         //time1.setText("Date获取当前日期时间"+simpleDateFormat.format(date));
