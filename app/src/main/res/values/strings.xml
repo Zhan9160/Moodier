@@ -26,5 +26,15 @@
     <string name="Back">Back</string>
     <string name="view_mood_record">View mood records</string>
     <string name="clear_record">Clear Records</string>
+    <string name="dialog_message">Are you make sure to exit before saving your mood?</string>
+    <string name="dialog_title">Warning！</string>
+    <string name="ok">OK</string>
+    <string name="cancel">Cancel</string>
+
+    <string name="About">About</string>
+    <string name="show_id">show id</string>
+    <string name="show_message">show goal detail</string>
+    <string name="delete_message">delete this goal</string>
+    <string name="goal_tip">This is your goal in plan. Please consider carefully when you manipulate.</string>
 
 </resources>

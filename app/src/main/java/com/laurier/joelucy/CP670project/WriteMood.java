@@ -2,10 +2,13 @@ package com.laurier.joelucy.CP670project;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -18,8 +21,10 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.SeekBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -40,6 +45,7 @@ public class WriteMood extends AppCompatActivity {
     SimpleDateFormat simpleDateFormat;
     Date date;
     TextView text_feel;
+    private ProgressBar progress;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,7 +56,7 @@ public class WriteMood extends AppCompatActivity {
         list = new ArrayList<>();
         final MoodAdapter messageAdapter = new MoodAdapter(this);
 //        listView.setAdapter(messageAdapter);
-
+        progress = findViewById(R.id.progressBar);
         simpleDateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");// HH:mm:ss
 //获取当前时间
         date = new Date(System.currentTimeMillis());
@@ -63,7 +69,7 @@ public class WriteMood extends AppCompatActivity {
         LayoutInflater log_mood_activity = LayoutInflater.from(WriteMood.this);
         View log_mood_layout = log_mood_activity.inflate(R.layout.activity_log_mood, null);
         text_feel = log_mood_layout.findViewById(R.id.mood_value);
-
+        progress.setProgress(50);
         sendButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -75,6 +81,40 @@ public class WriteMood extends AppCompatActivity {
                 ContentValues values = new ContentValues();
                 values.put("message", msg);
                 db.insert(MoodDatabaseHelper.TABLE_NAME, null, values);
+                progress.setProgress(100);
+            }
+        });
+        findViewById(R.id.write_mood_back).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (progress.getProgress()==100){
+                    Intent write_mood_back_intent = new Intent(WriteMood.this,LogMoodActivity.class);
+                    startActivity(write_mood_back_intent);
+                }
+                else{
+//                    Toast toask = Toast.makeText(this,"Are you make sure to exit before saving your mood? ")
+                    AlertDialog.Builder builder = new AlertDialog.Builder(WriteMood.this);
+// 2. Chain together various setter methods to set the dialog characteristics
+                    builder.setMessage(R.string.dialog_message) //Add a dialog message to strings.xml
+
+                            .setTitle(R.string.dialog_title)
+                            .setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int id) {
+                                    // User clicked OK button
+                                    Intent resultIntent = new Intent(  );
+                                    resultIntent.putExtra("Response", "Here is my response");
+                                    setResult(Activity.RESULT_OK, resultIntent);
+                                    finish();
+                                }
+                            })
+                            .setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int id) {
+                                    // User cancelled the dialog
+                                }
+                            })
+                            .show();
+                }
+
             }
         });
         db_helper = new MoodDatabaseHelper(this);
@@ -133,9 +173,11 @@ public class WriteMood extends AppCompatActivity {
     }
 
     public void go_to_moodhistory(View view){
+        if (progress.getProgress()==100 || progress.getProgress()==50){
+            Intent intent_moodhistory = new Intent(WriteMood.this,ListMoodRecord.class);
+            startActivity(intent_moodhistory);
+        }
 
-        Intent intent_moodhistory = new Intent(WriteMood.this,ListMoodRecord.class);
-        startActivity(intent_moodhistory);
 
     }
 }

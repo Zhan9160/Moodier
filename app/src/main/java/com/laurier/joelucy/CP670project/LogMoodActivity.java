@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
@@ -15,6 +16,7 @@ import com.google.android.material.snackbar.Snackbar;
 public class LogMoodActivity extends AppCompatActivity {
     private static final String ACTIVITY_NAME ="LogMoodActivity";
     SeekBar seekbar;
+    private ProgressBar progressBar;
     Snackbar snackbar;
     public String text;
     TextView textView;
@@ -23,6 +25,8 @@ public class LogMoodActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_log_mood);
         seekbar = (SeekBar) findViewById(R.id.seekBar2);
+        progressBar = findViewById(R.id.progressBar2);
+        //progressBar.setProgress
 //        findViewById(R.id.set_mood_button).setOnClickListener(new View.OnClickListener() {
 //            public void onClick(View view) {
 //                Intent log_mood_intent = new Intent(LogMoodActivity.this,WriteMood.class);
@@ -46,6 +50,7 @@ public class LogMoodActivity extends AppCompatActivity {
 
                                     }
                                 }).show();
+                        progressBar.incrementProgressBy(50);
                         break;
                     case 1:
                         text = "Bad";
@@ -57,6 +62,7 @@ public class LogMoodActivity extends AppCompatActivity {
 
                                 }
                             }).show();
+                        progressBar.incrementProgressBy(50);
                     break;
                     case 2:
                         text = "okay";
@@ -68,6 +74,7 @@ public class LogMoodActivity extends AppCompatActivity {
 
                                     }
                                 }).show();
+                        progressBar.incrementProgressBy(50);
                         break;
                     case 3:
                         text = "nice";
@@ -79,6 +86,7 @@ public class LogMoodActivity extends AppCompatActivity {
 
                                     }
                                 }).show();
+                        progressBar.incrementProgressBy(50);
                         break;
                     case 4:
                         text = "Very good";
@@ -90,6 +98,7 @@ public class LogMoodActivity extends AppCompatActivity {
 
                                     }
                                 }).show();
+                        progressBar.incrementProgressBy(50);
                         break;
                     case 5:
                         text = "Perfect";
@@ -101,6 +110,7 @@ public class LogMoodActivity extends AppCompatActivity {
 
                                     }
                                 }).show();
+                        progressBar.incrementProgressBy(50);
 
 
                 }
@@ -125,6 +135,7 @@ public class LogMoodActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent log_mood_intent = new Intent(LogMoodActivity.this,WriteMood.class);
                 startActivity(log_mood_intent);
+                progressBar.incrementProgressBy(50);
             }
         });
     }
