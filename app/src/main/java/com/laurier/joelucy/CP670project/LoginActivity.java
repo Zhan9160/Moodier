@@ -5,15 +5,19 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import com.google.android.material.tooltip.TooltipDrawable;
 
 public class LoginActivity extends AppCompatActivity {
     protected static final String ACTIVITY_NAME="LoginActivity";
@@ -23,6 +27,8 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         Log.i(ACTIVITY_NAME, "In onCreate()");
+        Toolbar toolbar = (Toolbar)findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
         loadData();
     }
 
@@ -52,6 +58,11 @@ public class LoginActivity extends AppCompatActivity {
         myEdit.commit();
 
     }
+    public void onOptionItemSelected(MenuItem item) {
+        Toast toast = Toast.makeText(this , "Version 1.0 by Peiyu Lu", Toast.LENGTH_LONG); //this is the ListActivity
+        toast.show(); //display your message box
+    }
+
 
     @Override
     protected void onStart() {

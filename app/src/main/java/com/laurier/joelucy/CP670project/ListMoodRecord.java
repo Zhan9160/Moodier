@@ -110,6 +110,10 @@ public class ListMoodRecord extends AppCompatActivity {
     }
 
     public void clear_record(View v){
+        if (listView.getCount()==0){
+            Toast toast = Toast.makeText(this,"It is already empty",Toast.LENGTH_LONG);
+            toast.show();
+        }
         listView.setAdapter(null);
 //        SQLiteDatabase.execSQL("DELETE FROM CUSTOMERS");
         db_helper.onUpgrade(db,4,5);

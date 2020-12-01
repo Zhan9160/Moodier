@@ -6,6 +6,11 @@
     android:layout_height="match_parent"
     tools:context=".WriteMood">
 
+<!--    <include-->
+<!--        android:id="@+id/write_mood"-->
+<!--        layout="@menu/bottom_nav_menu" />-->
+
+
     <EditText
         android:id="@+id/write_mood"
         android:layout_width="match_parent"
@@ -45,17 +50,16 @@
         android:layout_marginBottom="19dp"
         android:onClick="go_to_moodhistory"
         android:text="@string/view_mood_record"
-        app:layout_constraintBottom_toTopOf="@+id/back"
+        app:layout_constraintBottom_toTopOf="@+id/write_mood_back"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/submit_new_mood" />
 
     <Button
-        android:id="@+id/back"
+        android:id="@+id/write_mood_back"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginBottom="286dp"
-        android:onClick="go_to_moodhistory"
         android:text="@string/Back"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
