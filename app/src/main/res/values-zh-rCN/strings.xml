@@ -1,13 +1,29 @@
 <resources>
+<!--    whole app-->
     <string name="app_name">Moodier</string>
     <string name="title_home">主页</string>
     <string name="title_goals">目标</string>
     <string name="title_mood">心情</string>
     <string name="set_a_goal">设置一个目标</string>
     <string name="log_your_mood">记录你的心情</string>
-    <string name="set_goal_info">选择或创建一个对您而言似乎可以实现的对你而言更重要的治疗目标</string>
+    <string name="submit">提交</string>
+    <string name="Back">返回</string>
+    <string name="ok">确定</string>
+    <string name="cancel">取消</string>
+    <string name="About">关于</string>
+
+
+    <!--    Log mood activity-->
     <string name="mood_info">你今天心情好吗？（用滑动轴选择）</string>
     <string name="mood_continue">继续</string>
+    <string name="view_mood_record">查看心情记录</string>
+    <string name="clear_record">清空记录</string>
+    <string name="dialog_title">注意！</string>
+    <string name="dialog_message">你确定离开前不保存你的心情记录吗？</string>
+
+
+<!--    Set goal activity-->
+    <string name="set_goal_info">选择或创建一个对您而言似乎可以实现的对你而言更重要的治疗目标</string>
     <string name="enter_own_goal">输入你自己的目标。</string>
     <string name="Goal1">第一条目标</string>
     <string name="Goal2">第二条目标</string>
@@ -15,25 +31,19 @@
     <string name="Goal4">第四条目标</string>
     <string name="enter_own_goal_detail">在下面输入你自己的目标:</string>
     <string name="detailOf_your_own_goal">在这里输入你的目标</string>
+    <string name="show_id">显示ID</string>
+    <string name="show_message">显示目标</string>
+    <string name="delete_message">删除这个目标</string>
+    <string name="goal_tip">提示：</string>
 
+<!--    login activity-->
     <string name="Login">登陆</string>
     <string name="LoginName">用户名</string>
     <string name="Password">密码</string>
     <string name="PasswordName">密码</string>
     <string name="LoginButton">登陆</string>
 
-    <string name="submit">提交</string>
-    <string name="Back">返回</string>
-    <string name="view_mood_record">查看心情记录</string>
-    <string name="clear_record">清空记录</string>
-    <string name="dialog_message">你确定离开前不保存你的心情记录吗？</string>
-    <string name="dialog_title">注意！</string>
-    <string name="ok">确定</string>
-    <string name="cancel">取消</string>
 
-    <string name="About">关于</string>
-    <string name="show_id">显示ID</string>
-    <string name="show_message">显示目标</string>
-    <string name="delete_message">删除这个目标</string>
-    <string name="goal_tip">提示：</string>
+    <!--    user information page-->
+    <string name="user_info_page">我</string>
 </resources>
