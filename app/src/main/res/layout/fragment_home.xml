@@ -6,60 +6,134 @@
     android:layout_height="match_parent"
     tools:context=".ui.home.HomeFragment">
 
-    <Button
-        android:id="@+id/button"
+    <LinearLayout
+        android:id="@+id/linearLayout_left"
         android:layout_width="0dp"
-        android:layout_height="50dp"
-        android:layout_marginEnd="11dp"
-        android:text="@string/set_a_goal"
-        app:layout_constraintBaseline_toBaselineOf="@+id/button2"
-        app:layout_constraintEnd_toStartOf="@+id/button2"
+        android:layout_height="0dp"
+        android:layout_marginEnd="1dp"
+        android:layout_marginBottom="1dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/linearLayout_right"
         app:layout_constraintStart_toStartOf="parent"
-        android:onClick="get_setgoal_activity"
-        tools:ignore="OnClick" />
+        app:layout_constraintTop_toBottomOf="@+id/scrollView3">
 
-    <Button
-        android:id="@+id/button2"
+        <Button
+            android:id="@+id/set_goal_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="get_setgoal_activity"
+            android:text="@string/set_a_goal"
+            tools:ignore="OnClick" />
+
+        <Button
+            android:id="@+id/button17"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Button" />
+
+        <Button
+            android:id="@+id/moodRecord_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="go_to_moodhistory"
+            android:text="@string/view_mood_record"
+            tools:ignore="OnClick" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout_right"
         android:layout_width="0dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="25dp"
-        android:text="@string/log_your_mood"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/button"
-        app:layout_constraintTop_toTopOf="@+id/text_home"
-        android:onClick="get_logmood_activity"
-        tools:ignore="OnClick" />
-
-    <!--    <com.google.android.material.bottomnavigation.BottomNavigationView-->
-    <!--        android:id="@+id/nav_view"-->
-    <!--        android:layout_width="0dp"-->
-    <!--        android:layout_height="wrap_content"-->
-    <!--        android:layout_marginTop="200dp"-->
-    <!--        android:background="?android:attr/windowBackground"-->
-    <!--        app:backgroundTint="#00BA68C8"-->
-    <!--        app:elevation="0dp"-->
-    <!--        app:itemIconSize="0dp"-->
-    <!--        app:itemTextColor="#9575CD"-->
-    <!--        app:layout_constraintHorizontal_bias="0.0"-->
-    <!--        app:layout_constraintLeft_toLeftOf="parent"-->
-    <!--        app:layout_constraintRight_toRightOf="parent"-->
-    <!--        app:layout_constraintTop_toTopOf="parent"-->
-    <!--        app:menu="@menu/button_nav_menu" />-->
-
-    <TextView
-        android:id="@+id/text_home"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:textAlignment="center"
-        android:textSize="20sp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="1dp"
+        android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.356" />
+        app:layout_constraintStart_toEndOf="@+id/linearLayout_left"
+        app:layout_constraintTop_toBottomOf="@+id/scrollView3">
 
+        <Button
+            android:id="@+id/set_mood_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="get_logmood_activity"
+            android:text="@string/log_your_mood"
+            tools:ignore="OnClick" />
+
+        <Button
+            android:id="@+id/button16"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Button" />
+
+        <Button
+            android:id="@+id/user_information_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/user_info_page" />
+
+    </LinearLayout>
+
+    <ScrollView
+        android:id="@+id/scrollView3"
+        android:layout_width="407dp"
+        android:layout_height="258dp"
+        android:layout_marginTop="1dp"
+        android:layout_marginBottom="1dp"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout_right"
+        app:layout_constraintEnd_toEndOf="@+id/linearLayout_left"
+        app:layout_constraintStart_toEndOf="@+id/linearLayout_left"
+        app:layout_constraintTop_toTopOf="parent">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
+                android:padding="20dp"
+                android:orientation="vertical">
+                <androidx.viewpager2.widget.ViewPager2
+                    android:id="@+id/viewContent"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="25dp"
+                    android:orientation="horizontal"
+                    android:layout_gravity="bottom"
+                    android:gravity="center"
+                    android:layout_marginTop="5dp"
+                    android:background="#E6E6E6">
+                    <View
+                        android:id="@+id/p1"
+                        android:layout_width="5dp"
+                        android:layout_height="5dp"
+                        android:layout_marginLeft="2dp"
+                        android:layout_marginRight="2dp"
+                        android:background="@drawable/dot_focus"/>
+                    <View
+                        android:id="@+id/p2"
+                        android:layout_width="5dp"
+                        android:layout_height="5dp"
+                        android:layout_marginLeft="2dp"
+                        android:layout_marginRight="2dp"
+                        android:background="@drawable/dot_normal"/>
+                    <View
+                        android:id="@+id/p3"
+                        android:layout_width="5dp"
+                        android:layout_height="5dp"
+                        android:layout_marginLeft="2dp"
+                        android:layout_marginRight="2dp"
+                        android:background="@drawable/dot_normal"/>
+                    <View
+                        android:id="@+id/p4"
+                        android:layout_width="5dp"
+                        android:layout_height="5dp"
+                        android:layout_marginLeft="2dp"
+                        android:layout_marginRight="2dp"
+                        android:background="@drawable/dot_normal"/>
+                </LinearLayout>
+            </FrameLayout>
+        </RelativeLayout>
+    </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>
