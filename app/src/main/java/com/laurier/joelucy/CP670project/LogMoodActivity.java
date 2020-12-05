@@ -139,6 +139,9 @@ public class LogMoodActivity extends AppCompatActivity {
             }
         });
     }
+
+    public void onbtnContinueClick(View view) {
+    }
 //    public void get_writemood_activity(View v){
 //        Intent log_mood_intent = new Intent(LogMoodActivity.this,WriteMood.class);
 //        startActivity(log_mood_intent);
