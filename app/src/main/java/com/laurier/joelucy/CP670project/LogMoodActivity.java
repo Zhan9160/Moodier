@@ -15,6 +15,7 @@ import com.google.android.material.snackbar.Snackbar;
 
 public class LogMoodActivity extends AppCompatActivity {
     private static final String ACTIVITY_NAME ="LogMoodActivity";
+    private static final String test ="test_for_merge";
     SeekBar seekbar;
     private ProgressBar progressBar;
     Snackbar snackbar;
@@ -26,6 +27,7 @@ public class LogMoodActivity extends AppCompatActivity {
         setContentView(R.layout.activity_log_mood);
         seekbar = (SeekBar) findViewById(R.id.seekBar2);
         progressBar = findViewById(R.id.progressBar2);
+
         //progressBar.setProgress
 //        findViewById(R.id.set_mood_button).setOnClickListener(new View.OnClickListener() {
 //            public void onClick(View view) {
