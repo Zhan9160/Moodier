@@ -1,6 +1,11 @@
 package com.laurier.joelucy.CP670project.ui.home;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -9,9 +14,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
@@ -20,9 +27,11 @@ import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 import androidx.viewpager2.widget.ViewPager2;
 
+import com.laurier.joelucy.CP670project.GoalDatabaseHelper;
 import com.laurier.joelucy.CP670project.ListMoodRecord;
 import com.laurier.joelucy.CP670project.MainActivity;
 import com.laurier.joelucy.CP670project.R;
+import com.laurier.joelucy.CP670project.WriteMood;
 
 import java.util.ArrayList;
 import java.util.concurrent.Executors;
@@ -57,7 +66,54 @@ public class HomeFragment extends Fragment {
 //        });
 
         setView();
+        getTopGoal();
+
         return root;
+    }
+    public void getTopGoal(){
+        TextView t1 = root.findViewById(R.id.top_goal1);
+        TextView t2 = root.findViewById(R.id.top_goal2);
+        TextView t3 = root.findViewById(R.id.top_goal3);
+        GoalDatabaseHelper dbHelper = new GoalDatabaseHelper(getActivity());
+        SQLiteDatabase database = dbHelper.getReadableDatabase();
+        Cursor c = database.query("message", null, null, null, null, null, null);
+
+        if(c.moveToLast()==true) {
+            //c.moveToLast();
+            t1.setText(c.getString(c.getColumnIndex("message")));
+        }
+        if (c.moveToPrevious()==true){
+            //c.moveToPrevious();
+            t2.setText(c.getString(c.getColumnIndex("message")));
+        }
+        if (c.moveToPrevious()==true){
+            t3.setText(c.getString(c.getColumnIndex("message")));
+        }
+
+//        c.moveToPrevious();
+//        t2.setText(c.getString(c.getColumnIndex("message")));
+//        c.moveToPrevious();
+//        t3.setText(c.getString(c.getColumnIndex("message")));
+//        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+//        builder.setMessage(c.getString(c.getColumnIndex("message"))) //Add a dialog message to strings.xml
+//
+//                .setTitle(R.string.dialog_title)
+//                .setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
+//                    public void onClick(DialogInterface dialog, int id) {
+//                        // User clicked OK button
+//                        Intent resultIntent = new Intent(  );
+//                        resultIntent.putExtra("Response", "Here is my response");
+////                        setResult(Activity.RESULT_OK, resultIntent);
+////                        finish();
+//                    }
+//                })
+//                .setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
+//                    public void onClick(DialogInterface dialog, int id) {
+//                        // User cancelled the dialog
+//                    }
+//                })
+//                .show();
+        //Toast toast =
     }
     public void setView() {
         vp = (ViewPager)root.findViewById(R.id.viewContent);
