@@ -43,7 +43,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
             + " text not null);";
 
     // super constructor call
-    MySQLiteHelper(Context context) {
+    public MySQLiteHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 
@@ -67,4 +67,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
         database.execSQL("select count(*) " + " from " + tableName);
         return count;
     }
+
+
+    //public static
 }
