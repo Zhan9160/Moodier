@@ -42,6 +42,7 @@ public class HomeFragment extends Fragment {
     int oldPosition=0;
     int currentItem;
     ScheduledExecutorService scheduledExecutorService;
+    //
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
