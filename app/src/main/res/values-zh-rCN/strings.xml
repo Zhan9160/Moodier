@@ -46,4 +46,5 @@
 
     <!--    user information page-->
     <string name="user_info_page">我</string>
+    <string name="mylog">MyLog</string>
 </resources>

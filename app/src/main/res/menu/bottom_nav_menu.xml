@@ -15,5 +15,9 @@
         android:id="@+id/navigation_mood"
         android:icon="@drawable/ic_notifications_black_24dp"
         android:title="@string/title_mood" />
+    <item
+        android:id="@+id/navigation_log"
+        android:icon="@android:drawable/star_big_on"
+        android:title="MyLog" />
 
 </menu>

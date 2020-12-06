@@ -44,5 +44,6 @@
 
 <!--    user information page-->
     <string name="user_info_page">Me</string>
+    <string name="mylog">MyLog</string>
 
 </resources>
