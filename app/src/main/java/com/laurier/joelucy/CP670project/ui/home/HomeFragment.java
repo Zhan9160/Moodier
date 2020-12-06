@@ -89,31 +89,6 @@ public class HomeFragment extends Fragment {
         if (c.moveToPrevious()==true){
             t3.setText(c.getString(c.getColumnIndex("message")));
         }
-
-//        c.moveToPrevious();
-//        t2.setText(c.getString(c.getColumnIndex("message")));
-//        c.moveToPrevious();
-//        t3.setText(c.getString(c.getColumnIndex("message")));
-//        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-//        builder.setMessage(c.getString(c.getColumnIndex("message"))) //Add a dialog message to strings.xml
-//
-//                .setTitle(R.string.dialog_title)
-//                .setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
-//                    public void onClick(DialogInterface dialog, int id) {
-//                        // User clicked OK button
-//                        Intent resultIntent = new Intent(  );
-//                        resultIntent.putExtra("Response", "Here is my response");
-////                        setResult(Activity.RESULT_OK, resultIntent);
-////                        finish();
-//                    }
-//                })
-//                .setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
-//                    public void onClick(DialogInterface dialog, int id) {
-//                        // User cancelled the dialog
-//                    }
-//                })
-//                .show();
-        //Toast toast =
     }
     public void setView() {
         vp = (ViewPager)root.findViewById(R.id.viewContent);

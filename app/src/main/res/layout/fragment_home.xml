@@ -10,8 +10,10 @@
         android:id="@+id/linearLayout_left"
         android:layout_width="200dp"
         android:layout_height="150dp"
+        android:layout_marginStart="6dp"
+        android:layout_marginEnd="5dp"
         android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="@+id/linearLayout_right"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
         app:layout_constraintEnd_toStartOf="@+id/linearLayout_right"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/scrollView3">
@@ -44,7 +46,9 @@
         android:layout_width="200dp"
         android:layout_height="150dp"
         android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/linearLayout_left"
         app:layout_constraintTop_toBottomOf="@+id/scrollView3">
 
         <Button
@@ -72,8 +76,10 @@
     <ScrollView
         android:id="@+id/scrollView3"
         android:layout_width="match_parent"
-        android:layout_height="255dp"
-        app:layout_constraintEnd_toStartOf="@+id/linearLayout_left"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout_right"
+        app:layout_constraintEnd_toEndOf="@+id/linearLayout_left"
+        app:layout_constraintStart_toEndOf="@+id/linearLayout_left"
         app:layout_constraintTop_toTopOf="parent">
 
         <RelativeLayout
@@ -136,30 +142,33 @@
     </ScrollView>
 
     <LinearLayout
-        android:layout_width="442dp"
-        android:layout_height="399dp"
+        android:id="@+id/linearLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="308dp"
         android:orientation="vertical"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/linearLayout_left"
+        app:layout_constraintStart_toEndOf="@+id/linearLayout_left"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout_right">
 
         <TextView
             android:id="@+id/top_goal1"
             android:layout_width="match_parent"
-            android:layout_height="120dp"
+            android:layout_height="100dp"
             android:ems="10"
             android:gravity="start|top" />
 
         <TextView
             android:id="@+id/top_goal2"
             android:layout_width="match_parent"
-            android:layout_height="120dp"
+            android:layout_height="100dp"
             android:ems="10"
             android:gravity="start|top" />
 
         <TextView
             android:id="@+id/top_goal3"
             android:layout_width="match_parent"
-            android:layout_height="120dp"
+            android:layout_height="100dp"
             android:ems="10"
             android:gravity="start|top" />
     </LinearLayout>
