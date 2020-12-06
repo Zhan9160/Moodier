@@ -47,7 +47,7 @@ public class HomeFragment extends Fragment {
     ArrayList<View>dots=new ArrayList<>();
     ViewPager vp;
     ViewPagerAdapter adapter;
-    int[] image = {R.drawable.main1, R.drawable.main2, R.drawable.main3, R.drawable.main4};
+    int[] image = {R.drawable.main1, R.drawable.main1, R.drawable.main1, R.drawable.main1};
     int oldPosition=0;
     int currentItem;
     ScheduledExecutorService scheduledExecutorService;
