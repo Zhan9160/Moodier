@@ -3,6 +3,7 @@ package com.laurier.joelucy.CP670project.BD;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 public class MySQLiteHelper extends SQLiteOpenHelper {
 
@@ -57,6 +58,16 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_GoalLog);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_MoodLog);
+        onCreate(db);
+    }
+
+    @Override
+    public void onDowngrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+/*        Log.w(SQLiteOpenHelper.class.getName(),
+                "Downgrading database from version " + newVersion + " to "
+                        + oldVersion);*/
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_GoalLog);
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_MoodLog);
         onCreate(db);
