@@ -12,11 +12,7 @@
         android:theme="@style/AppTheme">
         <activity android:name=".CreateNewGoal"></activity>
         <activity android:name=".SetGoal2" />
-        <activity
-            android:name=".SetGoalActivityNew"
-            android:label="@string/title_activity_set_goal_new"
-            android:theme="@style/AppTheme.NoActionBar"
-            tools:ignore="MissingClass" />
+
         <activity android:name=".GoalDetail" />
         <activity
             android:name=".ToolBarActivity"
