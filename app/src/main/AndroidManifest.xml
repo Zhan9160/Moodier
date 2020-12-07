@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.laurier.joelucy.CP670project">
 
     <application
@@ -9,7 +10,14 @@
         android:roundIcon="@drawable/smile1"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".GoalDetail"></activity>
+        <activity android:name=".CreateNewGoal"></activity>
+        <activity android:name=".SetGoal2" />
+        <activity
+            android:name=".SetGoalActivityNew"
+            android:label="@string/title_activity_set_goal_new"
+            android:theme="@style/AppTheme.NoActionBar"
+            tools:ignore="MissingClass" />
+        <activity android:name=".GoalDetail" />
         <activity
             android:name=".ToolBarActivity"
             android:label="@string/Login"

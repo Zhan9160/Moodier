@@ -91,12 +91,30 @@ public class SetGoalActivity extends AppCompatActivity {
         LayoutInflater create_goal_activity = LayoutInflater.from(SetGoalActivity.this);
         View create_goal_layout = create_goal_activity.inflate(R.layout.activity_create_goal, null);
         //textInput = create_goal_layout.findViewById(R.id.create_goal);
-        textInput = findViewById(R.id.create_goal);
+        textInput = (EditText)findViewById(R.id.create_goal);
         //FrameLayout frameLayout;
-        sendButton = findViewById(R.id.button3);
-
+        sendButton = (Button) findViewById(R.id.button3);
 
         sendButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v)
+            {
+                Log.d("", "");
+                String msg = simpleDateFormat.format(date) +"\n" + textInput.getText().toString();
+                list.add(msg);
+                messageAdapter.notifyDataSetChanged();
+                textInput.setText("");
+                ContentValues values = new ContentValues();
+                values.put("Content", msg);
+                values.put("CreateOn", date.toString());
+//                values.put("UserID","");
+//                values.put("CategoryID","");
+                db.insert(MySQLiteHelper.TABLE_GoalLog, null, values);
+                Log.i(ACTIVITY_NAME, msg);
+            }
+        });
+
+        /*sendButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String msg = simpleDateFormat.format(date) +"\n" + textInput.getText().toString();
@@ -105,12 +123,13 @@ public class SetGoalActivity extends AppCompatActivity {
                 textInput.setText("");
                 ContentValues values = new ContentValues();
                 values.put("Content", msg);
+                values.put("CreateOn", date.toString());
 //                values.put("UserID","");
 //                values.put("CategoryID","");
                 db.insert(MySQLiteHelper.TABLE_GoalLog, null, values);
                 //Log.i(ACTIVITY_NAME,)
             }
-        });
+        });*/
         findViewById(R.id.button4).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

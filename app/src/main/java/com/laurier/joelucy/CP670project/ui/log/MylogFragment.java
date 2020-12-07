@@ -43,10 +43,10 @@ public class MylogFragment extends Fragment {
     private List<LogItem> logItems = null;
     private String[] moodColumns =
             {MySQLiteHelper.Mood_ID,
-                    MySQLiteHelper.Mode_Type, MySQLiteHelper.Mood_UID,MySQLiteHelper.Mood_CreateOn, MySQLiteHelper.Mood_Text};
+                    MySQLiteHelper.Mode_Type, MySQLiteHelper.Mood_UID, MySQLiteHelper.Mood_Text,MySQLiteHelper.Mood_CreateOn};
     private String[] goalColumns =
             {MySQLiteHelper.Goal_ID,
-                    MySQLiteHelper.Goal_CID, MySQLiteHelper.Goal_UID, MySQLiteHelper.Goal_CreateOn, MySQLiteHelper.Goal_Text};
+                     MySQLiteHelper.Goal_UID,MySQLiteHelper.Goal_CID, MySQLiteHelper.Goal_Text,MySQLiteHelper.Goal_CreateOn };
     String strDate="";
     long btnClicktype=0;
     private final static long allItems = 0;
@@ -163,17 +163,20 @@ public class MylogFragment extends Fragment {
     private List<LogItem> getAllItems(long itemType)
     {
         dbOpenHelper = new MySQLiteHelper(getActivity());
-        dbOpenHelper.getReadableDatabase();
+        database = dbOpenHelper.getReadableDatabase();
         List<LogItem> items = new ArrayList<>();
         Cursor cursor;
         //Goal
         if (itemType == goalItems || itemType == allItems) {
             cursor = database.query(MySQLiteHelper.TABLE_GoalLog, goalColumns, null, null, null, null,
-                    MySQLiteHelper.Goal_CreateOn + " desc");
+                    null);
             cursor.moveToFirst();
-
+            int countI = cursor.getCount();
             while (!cursor.isAfterLast()) {
-                LogItem item = new LogItem(cursor.getLong(0), cursor.getString(4), 1, cursor.getString(3));
+                long id =cursor.getLong(0);
+                String col3 =cursor.getString(3);
+                String col4 = cursor.getString(4);
+                LogItem item = new LogItem(cursor.getLong(0), cursor.getString(3), 1, cursor.getString(4));
                 items.add(item);
                 cursor.moveToNext();
             }
@@ -185,11 +188,11 @@ public class MylogFragment extends Fragment {
         // mood
         if (itemType == moodItems || itemType == allItems) {
             cursor = database.query(MySQLiteHelper.TABLE_MoodLog, moodColumns, null, null, null, null,
-                    MySQLiteHelper.Mood_CreateOn + " desc");
+                    null);
             cursor.moveToFirst();
 
             while (!cursor.isAfterLast()) {
-                LogItem item2 = new LogItem(cursor.getLong(0), cursor.getString(4), 1, cursor.getString(3));
+                LogItem item2 = new LogItem(cursor.getLong(0), cursor.getString(3), 1, cursor.getString(4));
                 items.add(item2);
                 cursor.moveToNext();
             }
@@ -218,7 +221,7 @@ public class MylogFragment extends Fragment {
     }
 
     private void initList(String selectDate, long logType) throws ParseException {
-        /*List<LogItem> values;
+        List<LogItem> values;
 
         if(selectDate.isEmpty())
         {
@@ -231,9 +234,9 @@ public class MylogFragment extends Fragment {
         }
 
 
-        mAdapter= new ArrayAdapter <LogItem>(getActivity(), R.layout.mylog_fragment, values);*/
+        mAdapter= new ArrayAdapter <LogItem>(getActivity(), android.R.layout.simple_list_item_1, values);
 
-        String[] listdata = new String[]{"image", "title", "date", "time"};
+        /*String[] listdata = new String[]{"image", "title", "date", "time"};
         if (selectDate.isEmpty())
         {
             listdata = new String[]{Long.toString(logType), "title", "date", "time"};
@@ -243,10 +246,10 @@ public class MylogFragment extends Fragment {
             listdata = new String[]{selectDate, Long.toString(logType), "title", "date", "time"};
         }
 
-        testAdapter = new ArrayAdapter<String>(getActivity(),android.R.layout.simple_list_item_1, listdata);
+        testAdapter = new ArrayAdapter<String>(getActivity(),android.R.layout.simple_list_item_1, listdata);*/
         try {
             ListView listView = (ListView)rView.findViewById(R.id.lstLog);
-            listView.setAdapter(testAdapter);
+            listView.setAdapter(mAdapter);
         }
         catch (Exception e)
         {

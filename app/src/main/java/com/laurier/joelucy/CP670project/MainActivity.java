@@ -56,7 +56,9 @@ public class MainActivity extends AppCompatActivity {
     }
     //go to set goals page
     public void get_setgoal_activity(View view){
-        Intent set_goal_intent = new Intent(MainActivity.this,SetGoalActivity.class);
+/*        Intent set_goal_intent = new Intent(MainActivity.this,SetGoalActivity.class);
+        startActivity(set_goal_intent);*/
+        Intent set_goal_intent = new Intent(MainActivity.this,SetGoal2.class);
         startActivity(set_goal_intent);
         Log.i(ACTIVITY_NAME, "In onCreate()");
     }

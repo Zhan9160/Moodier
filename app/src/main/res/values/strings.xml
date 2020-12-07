@@ -1,5 +1,5 @@
 <resources>
-<!--    whole app-->
+    <!--    whole app-->
     <string name="app_name">Moodier</string>
     <string name="title_home">Home</string>
     <string name="title_goals">Goals</string>
@@ -12,7 +12,7 @@
     <string name="cancel">Cancel</string>
     <string name="About">About</string>
 
-<!--    Log mood activity-->
+    <!--    Log mood activity-->
     <string name="mood_info">How Are You Feeling Today?(Use the slider to choose)</string>
     <string name="mood_continue">Continue</string>
     <string name="view_mood_record">View mood records</string>
@@ -20,7 +20,7 @@
     <string name="dialog_title">Warning！</string>
     <string name="dialog_message">Are you make sure to exit before saving your mood?</string>
 
-<!--    Set goal activity-->
+    <!--    Set goal activity-->
     <string name="set_goal_info">Choose or create a goal that seems important to your treatment that feels achievable to you</string>
     <string name="enter_own_goal">Enter your own goal.</string>
     <string name="Goal1">Your first goal here.</string>
@@ -42,8 +42,17 @@
     <string name="LoginButton">Login</string>
 
 
-<!--    user information page-->
+    <!--    user information page-->
     <string name="user_info_page">Me</string>
     <string name="mylog">MyLog</string>
+    <string name="title_activity_set_goal_new">SetGoalActivityNew</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
 
 </resources>
