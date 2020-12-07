@@ -24,6 +24,8 @@ import android.widget.ListView;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
+import com.laurier.joelucy.CP670project.BD.MySQLiteHelper;
+
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -34,13 +36,15 @@ public class SetGoalActivity extends AppCompatActivity {
     private EditText textInput;
     private ArrayList<String> list;
     GoalAdapter messageAdapter;
-    GoalDatabaseHelper db_helper;
+//    GoalDatabaseHelper db_helper;
+    MySQLiteHelper db_helper;
     SQLiteDatabase db;
     Cursor cursor;
     SimpleDateFormat simpleDateFormat;
     Date date;
     private int current;
     private boolean is_exist;
+    private Button sendButton;
     //ItemTouchHelper.Callback;
     GoalDetail.MessageFragment fragment;
 
@@ -89,7 +93,7 @@ public class SetGoalActivity extends AppCompatActivity {
         //textInput = create_goal_layout.findViewById(R.id.create_goal);
         textInput = findViewById(R.id.create_goal);
         //FrameLayout frameLayout;
-        Button sendButton = findViewById(R.id.button3);
+        sendButton = findViewById(R.id.button3);
 
 
         sendButton.setOnClickListener(new View.OnClickListener() {
@@ -100,8 +104,11 @@ public class SetGoalActivity extends AppCompatActivity {
                 messageAdapter.notifyDataSetChanged();
                 textInput.setText("");
                 ContentValues values = new ContentValues();
-                values.put("message", msg);
-                db.insert(GoalDatabaseHelper.TABLE_NAME, null, values);
+                values.put("Content", msg);
+//                values.put("UserID","");
+//                values.put("CategoryID","");
+                db.insert(MySQLiteHelper.TABLE_GoalLog, null, values);
+                //Log.i(ACTIVITY_NAME,)
             }
         });
         findViewById(R.id.button4).setOnClickListener(new View.OnClickListener() {
@@ -111,12 +118,12 @@ public class SetGoalActivity extends AppCompatActivity {
                 startActivityForResult(back_intent,100);
             }
         });
-        db_helper = new GoalDatabaseHelper(this);
+        db_helper = new MySQLiteHelper(this);
         db = db_helper.getWritableDatabase();
-        cursor = db.rawQuery("select * from " + GoalDatabaseHelper.TABLE_NAME,null);
+        cursor = db.rawQuery("select * from " + MySQLiteHelper.TABLE_GoalLog,null);
         cursor.moveToFirst();
         while (!cursor.isAfterLast()) {
-            Log.i(ACTIVITY_NAME, "SQL MESSAGE:" + cursor.getString(cursor.getColumnIndex(GoalDatabaseHelper.KEY_MESSAGE)));
+            Log.i(ACTIVITY_NAME, "SQL MESSAGE:" + cursor.getString(cursor.getColumnIndex(MySQLiteHelper.Goal_Text)));
             Log.i(ACTIVITY_NAME, "Cursor’s  column count =" + cursor.getColumnCount());
             for (int i = 0; i < cursor.getColumnCount(); i++) {
                 Log.i(ACTIVITY_NAME, cursor.getColumnName(i));
@@ -130,7 +137,7 @@ public class SetGoalActivity extends AppCompatActivity {
     }
     public void create_goal(View view){
         Intent create_goal_intent = new Intent(SetGoalActivity.this,CreateGoalActivity.class);
-        startActivity(create_goal_intent);
+
 
     }
     @Override
@@ -138,8 +145,8 @@ public class SetGoalActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == 1001 && resultCode == RESULT_OK) {
             assert data != null;
-            long id = data.getLongExtra("id", 0);
-            db.delete(GoalDatabaseHelper.TABLE_NAME, GoalDatabaseHelper.KEY_ID + "=?", new String[]{id + ""});
+            long id = data.getLongExtra("id", 1);
+            db.delete(MySQLiteHelper.TABLE_GoalLog, MySQLiteHelper.Goal_ID + "=?", new String[]{id + ""});
             list.remove(current);
             messageAdapter.notifyDataSetChanged();
         }

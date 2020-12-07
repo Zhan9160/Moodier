@@ -24,8 +24,8 @@ public class GoalDetail extends AppCompatActivity {
         setContentView(R.layout.activity_goal_detail);
 
 
-        long id = getIntent().getLongExtra("id", 0);
-        String message = getIntent().getStringExtra("message");
+        long id = getIntent().getLongExtra("ID", 0);
+        String message = getIntent().getStringExtra("Content");
 
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
         ft.replace(R.id.frame_layout, new MessageFragment(id, message,false));
