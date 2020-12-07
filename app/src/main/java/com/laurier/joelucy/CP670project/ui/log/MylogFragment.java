@@ -2,9 +2,11 @@ package com.laurier.joelucy.CP670project.ui.log;
 
 import androidx.lifecycle.ViewModelProvider;
 
+import android.content.res.Resources;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -17,7 +19,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CalendarView;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import com.laurier.joelucy.CP670project.BD.LogItem;
@@ -25,7 +29,10 @@ import com.laurier.joelucy.CP670project.BD.MySQLiteHelper;
 import com.laurier.joelucy.CP670project.MoodDatabaseHelper;
 import com.laurier.joelucy.CP670project.R;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class MylogFragment extends Fragment {
@@ -40,7 +47,13 @@ public class MylogFragment extends Fragment {
     private String[] goalColumns =
             {MySQLiteHelper.Goal_ID,
                     MySQLiteHelper.Goal_CID, MySQLiteHelper.Goal_UID, MySQLiteHelper.Goal_CreateOn, MySQLiteHelper.Goal_Text};
-
+    String strDate="";
+    long btnClicktype=0;
+    private final static long allItems = 0;
+    private final static long goalItems = 1;
+    private final static long moodItems = 2;
+    private ArrayAdapter <LogItem> mAdapter;
+    private ArrayAdapter<String> testAdapter;
     private View rView;
     public static MylogFragment newInstance() {
         return new MylogFragment();
@@ -51,14 +64,11 @@ public class MylogFragment extends Fragment {
                              @Nullable Bundle savedInstanceState) {
         //initList();
         rView= inflater.inflate(R.layout.mylog_fragment, container, false);
-
-/*        displaybtn.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v) {
-                TextView textView =  (TextView) v.findViewById(R.id.txtDate);
-               textView.setText("2001-1-1");
-            }
-        });*/
+        /*try {
+            initList(strDate,btnClicktype);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }*/
         return rView;
     }
 
@@ -69,82 +79,180 @@ public class MylogFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
         //mViewModel = new ViewModelProvider(this).get(MylogViewModel.class);
         registerEvents();
+        try {
+            initList(strDate,btnClicktype);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
 
 
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        //super.onViewCreated(view, savedInstanceState);
+        super.onViewCreated(view, savedInstanceState);
 
     }
 
     private void registerEvents()
     {
-        Button displaybtn = (Button)getActivity().findViewById(R.id.btnDisplayall);
+        CalendarView cv = (CalendarView)rView.findViewById(R.id.calendarView);
+        cv.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
+            @Override
+            public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth) {
+                TextView textView = (TextView) rView.findViewById(R.id.txtDate);
+                strDate = year+"-"+month+"-"+dayOfMonth;
+                textView.setText(strDate);
+
+                try {
+                    initList(strDate, btnClicktype);
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+
+        Button displaybtn = (Button)rView.findViewById(R.id.btnDisplayall);
         displaybtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                TextView textView = (TextView) getActivity().findViewById(R.id.txtDate);
-                textView.setText("all");
+                btnClicktype = allItems;
+                try {
+                    //Resources resources=getContext().getResources();
+                    //Drawable drawable=resources.getDrawable(R.drawable.buttonshape2);
+                    TextView textView = (TextView) rView.findViewById(R.id.txtDate);
+                    textView.setBackgroundResource(R.drawable.buttonshape2);
+                    initList(strDate,btnClicktype);
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
             }
         });
 
-        Button displayGoal = (Button)getActivity().findViewById(R.id.btnDisplayGoals);
+        Button displayGoal = (Button)rView.findViewById(R.id.btnDisplayGoals);
         displayGoal.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                TextView textView = (TextView) getActivity().findViewById(R.id.txtDate);
-                textView.setText("goal");
+                btnClicktype = goalItems;
+                try {
+                    TextView textView = (TextView) rView.findViewById(R.id.txtDate);
+                    textView.setBackgroundResource(R.drawable.buttonshape_down);
+                    initList(strDate,btnClicktype);
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
             }
         });
 
 
-        Button displayMood = (Button)getActivity().findViewById(R.id.btnDisplayMoods);
+        Button displayMood = (Button)rView.findViewById(R.id.btnDisplayMoods);
         displayMood.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                TextView textView = (TextView) getActivity().findViewById(R.id.txtDate);
-                textView.setText("mood");
+                btnClicktype = moodItems;
+                try {
+                    TextView textView = (TextView) rView.findViewById(R.id.txtDate);
+                    textView.setBackgroundResource(R.drawable.buttonshape);
+                    initList(strDate,btnClicktype);
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
             }
         });
     }
-    private List<LogItem> getAllItems()
+    private List<LogItem> getAllItems(long itemType)
     {
         dbOpenHelper = new MySQLiteHelper(getActivity());
         dbOpenHelper.getReadableDatabase();
         List<LogItem> items = new ArrayList<>();
+        Cursor cursor;
         //Goal
-        Cursor cursor  =database.query(MySQLiteHelper.TABLE_GoalLog, goalColumns, null,null,null,null,
-                MySQLiteHelper.Goal_CreateOn+ " desc");
-        cursor.moveToFirst();
+        if (itemType == goalItems || itemType == allItems) {
+            cursor = database.query(MySQLiteHelper.TABLE_GoalLog, goalColumns, null, null, null, null,
+                    MySQLiteHelper.Goal_CreateOn + " desc");
+            cursor.moveToFirst();
 
-        while (!cursor.isAfterLast()) {
-            LogItem item = new LogItem(cursor.getLong(0), cursor.getString(4), 1);
-            items.add(item);
-            cursor.moveToNext();
+            while (!cursor.isAfterLast()) {
+                LogItem item = new LogItem(cursor.getLong(0), cursor.getString(4), 1, cursor.getString(3));
+                items.add(item);
+                cursor.moveToNext();
+            }
+            // Make sure to close the cursor
+            cursor.close();
         }
-        // Make sure to close the cursor
-        cursor.close();
+
+
         // mood
-        cursor  =database.query(MySQLiteHelper.TABLE_MoodLog, moodColumns, null,null,null,null,
-                MySQLiteHelper.Mood_CreateOn+ " desc");
-        cursor.moveToFirst();
+        if (itemType == moodItems || itemType == allItems) {
+            cursor = database.query(MySQLiteHelper.TABLE_MoodLog, moodColumns, null, null, null, null,
+                    MySQLiteHelper.Mood_CreateOn + " desc");
+            cursor.moveToFirst();
 
-        while (!cursor.isAfterLast()) {
-            LogItem item2 = new LogItem(cursor.getLong(0), cursor.getString(4), 1);
-            items.add(item2);
-            cursor.moveToNext();
+            while (!cursor.isAfterLast()) {
+                LogItem item2 = new LogItem(cursor.getLong(0), cursor.getString(4), 1, cursor.getString(3));
+                items.add(item2);
+                cursor.moveToNext();
+            }
+            // Make sure to close the cursor
+            cursor.close();
         }
-        // Make sure to close the cursor
-        cursor.close();
-
         return  items;
 
     }
+    private List<LogItem> filterbyDate(List<LogItem> listItems, String stringDate) throws ParseException {
+        List<LogItem> values = new ArrayList<>();
+        String formatType = "yyyy-MM-dd";
+        SimpleDateFormat formatter = new SimpleDateFormat(formatType);
+        Date date = null;
+        date = formatter.parse(stringDate);
 
-    private void initList() {
-        List<LogItem> items = getAllItems();
+        for(int i=0;i<listItems.size();i++)
+        {
+            if(formatter.parse(listItems.get(i).CreateOn) == date)
+            {
+                values.add(listItems.get(i));
+            }
+        }
+
+        return values;
+    }
+
+    private void initList(String selectDate, long logType) throws ParseException {
+        /*List<LogItem> values;
+
+        if(selectDate.isEmpty())
+        {
+            values = getAllItems(logType);
+        }
+        else
+        {
+            values = getAllItems(logType);
+            values = filterbyDate(values, selectDate);
+        }
+
+
+        mAdapter= new ArrayAdapter <LogItem>(getActivity(), R.layout.mylog_fragment, values);*/
+
+        String[] listdata = new String[]{"image", "title", "date", "time"};
+        if (selectDate.isEmpty())
+        {
+            listdata = new String[]{Long.toString(logType), "title", "date", "time"};
+        }
+        else
+        {
+            listdata = new String[]{selectDate, Long.toString(logType), "title", "date", "time"};
+        }
+
+        testAdapter = new ArrayAdapter<String>(getActivity(),android.R.layout.simple_list_item_1, listdata);
+        try {
+            ListView listView = (ListView)rView.findViewById(R.id.lstLog);
+            listView.setAdapter(testAdapter);
+        }
+        catch (Exception e)
+        {
+            Log.i("listview exception", e.getMessage());
+        }
+
 
     }
 

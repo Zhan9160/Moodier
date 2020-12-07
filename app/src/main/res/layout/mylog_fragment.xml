@@ -11,7 +11,7 @@
         android:id="@+id/calendarView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="5dp" />
+        android:layout_margin="1dp" />
 
 
 
@@ -24,33 +24,38 @@
             android:id="@+id/btnDisplayall"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="All Entries" />
+            android:text="All Entries"
+            android:background="@drawable/buttonshape2"/>
 
         <Button
             android:id="@+id/btnDisplayMoods"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Mood" />
+            android:text="Mood"
+            android:background="@drawable/buttonshape"/>
 
         <Button
             android:id="@+id/btnDisplayGoals"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Goal" />
+            android:text="Goal"
+            android:background="@drawable/buttonshape_down"/>
 
     </LinearLayout>
 
     <TextView
         android:id="@+id/txtDate"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="dfd" />
+        android:text="dfd"
+        android:textAlignment="center"
+        android:background="@drawable/buttonshape2" />
 
     <ListView
         android:id="@+id/lstLog"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="5dp" />
+        android:layout_margin="1dp" />
 
 
 </LinearLayout>
