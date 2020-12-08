@@ -33,6 +33,7 @@
     <string name="show_message">show goal detail</string>
     <string name="delete_message">delete this goal</string>
     <string name="goal_tip">This is your goal in plan. Please consider carefully when you manipulate.</string>
+    <string name="your_goal_is">Your goal is: </string>
 
     <!--    login activity-->
     <string name="Login">Login</string>
@@ -51,8 +52,13 @@
     <string name="second_fragment_label">Second Fragment</string>
     <string name="next">Next</string>
     <string name="previous">Previous</string>
-
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+
+    <string name="all_entry">All entries</string>
+    <string name="mood">Mood</string>
+    <string name="goal">Goal</string>
+    <string name="your_log">Your log</string>
+
 
 </resources>

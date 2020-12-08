@@ -78,6 +78,14 @@ public class GoalDetail extends AppCompatActivity {
                     }
                 }
             });
+            view.findViewById(R.id.btn_back).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(getActivity(),SetGoalActivity.class);//click empty
+                    //intent.putExtra("id", id);
+                    getActivity().finish();
+                }
+            });
             return view;
         }
     }

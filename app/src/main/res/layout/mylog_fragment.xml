@@ -24,21 +24,21 @@
             android:id="@+id/btnDisplayall"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="All Entries"
+            android:text="@string/all_entry"
             android:background="@drawable/buttonshape2"/>
 
         <Button
             android:id="@+id/btnDisplayMoods"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Mood"
+            android:text="@string/mood"
             android:background="@drawable/buttonshape"/>
 
         <Button
             android:id="@+id/btnDisplayGoals"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Goal"
+            android:text="@string/goal"
             android:background="@drawable/buttonshape_down"/>
 
     </LinearLayout>
@@ -47,7 +47,7 @@
         android:id="@+id/txtDate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="dfd"
+        android:text="@string/your_log"
         android:textAlignment="center"
         android:background="@drawable/buttonshape2" />
 

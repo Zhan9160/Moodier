@@ -1,7 +1,10 @@
 package com.laurier.joelucy.CP670project;
 
 import android.annotation.SuppressLint;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -11,9 +14,11 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.laurier.joelucy.CP670project.ui.log.MylogFragment;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -22,7 +27,7 @@ import androidx.navigation.ui.NavigationUI;
 public class MainActivity extends AppCompatActivity {
 
     private static final String ACTIVITY_NAME ="MAINACTIVITY";
-
+    FragmentManager mFragmentManager;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,6 +42,12 @@ public class MainActivity extends AppCompatActivity {
         // NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(navView, navController);
 
+//        mFragmentManager=getFragmentManager();
+//        FragmentTransaction fragmentTrans=mFragmentManager.beginTransaction();
+//        if(savedInstanceState==null){
+//            fragmentTrans.add(R.id.fragment_detail, FragmentTest.newInstance("test1"), "test1");
+//            fragmentTrans.commit();
+//        }
 //        findViewById(R.id.set_mood_button).setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View v) {
@@ -74,5 +85,20 @@ public class MainActivity extends AppCompatActivity {
         Log.i(ACTIVITY_NAME, "In onCreate()");
     }
 
+    public void get_mylog_activity(View v){
+        Intent mylog_intent = new Intent(MainActivity.this, MylogFragment.class);
+        startActivityForResult(mylog_intent,1);
+//        IntentFilter filter = new IntentFilter();
+//        filter.addAction();
+
+//        switchFragment(new MylogFragment());
+
+    }
+//private void switchFragment(Fragment f) {
+//    FragmentManager fragmentM = getSupportFragmentManager();//管理对象
+//    FragmentTransaction trans = fragmentM.beginTransaction();//切换碎片
+//    trans.replace(R.id.nav_host_fragment, f);
+//    trans.commit();
+//}
 
 }

@@ -24,7 +24,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
     public static final String Mood_CreateOn = "CreateOn";
 
     public static final String DATABASE_NAME = "Moodier.db";
-    private static final int DATABASE_VERSION = 1;
+    private static final int DATABASE_VERSION = 4;
 
     // Table/Database creation statement
     private static final String CREATE_TableGoal = "create table "

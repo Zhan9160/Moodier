@@ -2,6 +2,8 @@ package com.laurier.joelucy.CP670project.ui.home;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.content.ContentValues;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
@@ -9,10 +11,15 @@ import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -27,13 +34,16 @@ import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 import androidx.viewpager2.widget.ViewPager2;
 
+import com.laurier.joelucy.CP670project.BD.MySQLiteHelper;
 import com.laurier.joelucy.CP670project.GoalDatabaseHelper;
 import com.laurier.joelucy.CP670project.ListMoodRecord;
 import com.laurier.joelucy.CP670project.MainActivity;
+import com.laurier.joelucy.CP670project.MoodDatabaseHelper;
 import com.laurier.joelucy.CP670project.R;
 import com.laurier.joelucy.CP670project.WriteMood;
 
 import java.util.ArrayList;
+import java.util.SimpleTimeZone;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
@@ -50,8 +60,12 @@ public class HomeFragment extends Fragment {
     int[] image = {R.drawable.main1, R.drawable.main1, R.drawable.main1, R.drawable.main1};
     int oldPosition=0;
     int currentItem;
+
     ScheduledExecutorService scheduledExecutorService;
-    //
+    private ArrayList<Object> list;
+    GoalAdapter messageAdapter;
+    MySQLiteHelper db_helper;
+    SQLiteDatabase db;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -64,6 +78,12 @@ public class HomeFragment extends Fragment {
 //                textView.setText(s);
 //            }
 //        });
+//        root.findViewById(R.id.user_information_button).setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//
+//            }
+//        });
 
         setView();
         getTopGoal();
@@ -74,20 +94,53 @@ public class HomeFragment extends Fragment {
         TextView t1 = root.findViewById(R.id.top_goal1);
         TextView t2 = root.findViewById(R.id.top_goal2);
         TextView t3 = root.findViewById(R.id.top_goal3);
-        GoalDatabaseHelper dbHelper = new GoalDatabaseHelper(getActivity());
-        SQLiteDatabase database = dbHelper.getReadableDatabase();
-        Cursor c = database.query("message", null, null, null, null, null, null);
+//        t1.setText("!@#");
+        list = new ArrayList<>();
+        messageAdapter =new GoalAdapter( getActivity() );
+
+        LayoutInflater factory = LayoutInflater.from(getActivity());
+        View layout = factory.inflate(R.layout.activity_create_new_goal, null);
+//
+        Button submit = (Button)layout.findViewById(R.id.button6);
+        final EditText text = (EditText)layout.findViewById(R.id.editTextTextMultiLine2);
+        submit.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v){
+                String message = text.getText().toString();
+                list.add(message);
+                messageAdapter.notifyDataSetChanged(); //this restarts the process of getCount()/getView()
+                text.setText("");
+                //write
+                ContentValues cv = new ContentValues();
+                cv.put(MySQLiteHelper.Goal_Text,message);
+                cv.put(MySQLiteHelper.Goal_CreateOn, "");
+                db.insert(MySQLiteHelper.TABLE_GoalLog,null,cv);
+//
+            }
+        });
+        db_helper = new MySQLiteHelper(getActivity());
+        db = db_helper.getReadableDatabase();
+
+        Cursor cursor = db.rawQuery("select * from " + MySQLiteHelper.TABLE_GoalLog,null);
+        cursor.moveToFirst();
+        //reading from db file
+        while (!cursor.isAfterLast()) {
+            list.add(cursor.getString(1));
+            cursor.moveToNext();
+        }
+//        GoalDatabaseHelper dbHelper = new GoalDatabaseHelper(getActivity());
+//        SQLiteDatabase database = dbHelper.getReadableDatabase();
+        Cursor c = db.query(MySQLiteHelper.TABLE_GoalLog, null, null, null, null, null, null);
 
         if(c.moveToLast()==true) {
             //c.moveToLast();
-            t1.setText(c.getString(c.getColumnIndex("message")));
+            t1.setText(c.getString(c.getColumnIndex(MySQLiteHelper.Goal_Text)));
         }
         if (c.moveToPrevious()==true){
             //c.moveToPrevious();
-            t2.setText(c.getString(c.getColumnIndex("message")));
+            t2.setText(c.getString(c.getColumnIndex(MySQLiteHelper.Goal_Text)));
         }
         if (c.moveToPrevious()==true){
-            t3.setText(c.getString(c.getColumnIndex("message")));
+            t3.setText(c.getString(c.getColumnIndex(MySQLiteHelper.Goal_Text)));
         }
     }
     public void setView() {
@@ -173,4 +226,34 @@ public class HomeFragment extends Fragment {
             vp.setCurrentItem(currentItem);
         }
     };
+
+    private class GoalAdapter extends ArrayAdapter<String> {
+        public GoalAdapter(Context context) {
+            super(context,0);
+        }
+
+        public GoalAdapter(@NonNull Context context, int resource) {
+            super(context, resource);
+        }
+
+        public int getCount(){
+            return list.size();
+        }
+
+        public String getItem(int position){
+            return (String) list.get(position);
+        }
+
+        public View getView(int position, View convertView, ViewGroup parent){
+            LayoutInflater inflater = getActivity().getLayoutInflater();
+            View result = null ;
+            if(position%2 == 0)
+                result = inflater.inflate(R.layout.first_row, null);
+            else
+                result = inflater.inflate(R.layout.second_row, null);
+            TextView message = (TextView)result.findViewById(R.id.message_text);
+            message.setText(getItem(position)); // get the string at position
+            return result;
+        }
+    }
 }

@@ -9,7 +9,7 @@
     <LinearLayout
         android:id="@+id/linearLayout_left"
         android:layout_width="200dp"
-        android:layout_height="150dp"
+        android:layout_height="100dp"
         android:layout_marginStart="6dp"
         android:layout_marginEnd="5dp"
         android:orientation="vertical"
@@ -27,12 +27,6 @@
             tools:ignore="OnClick" />
 
         <Button
-            android:id="@+id/button17"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Button" />
-
-        <Button
             android:id="@+id/moodRecord_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -44,7 +38,7 @@
     <LinearLayout
         android:id="@+id/linearLayout_right"
         android:layout_width="200dp"
-        android:layout_height="150dp"
+        android:layout_height="100dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
         app:layout_constraintEnd_toEndOf="parent"
@@ -60,23 +54,19 @@
             tools:ignore="OnClick" />
 
         <Button
-            android:id="@+id/button16"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Button" />
-
-        <Button
             android:id="@+id/user_information_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/user_info_page" />
+            android:onClick="get_mylog_activity"
+            android:text="@string/user_info_page"
+            tools:ignore="OnClick" />
 
     </LinearLayout>
 
     <ScrollView
         android:id="@+id/scrollView3"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_width="407dp"
+        android:layout_height="274dp"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout_right"
         app:layout_constraintEnd_toEndOf="@+id/linearLayout_left"
         app:layout_constraintStart_toEndOf="@+id/linearLayout_left"
@@ -171,5 +161,9 @@
             android:layout_height="100dp"
             android:ems="10"
             android:gravity="start|top" />
+<!--        <ListView-->
+<!--            android:id="@+id/home_goal_listview"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent" />-->
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

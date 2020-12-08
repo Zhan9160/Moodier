@@ -35,6 +35,7 @@
     <string name="show_message">显示目标</string>
     <string name="delete_message">删除这个目标</string>
     <string name="goal_tip">提示：</string>
+    <string name="your_goal_is">你的目标： </string>
 
 <!--    login activity-->
     <string name="Login">登陆</string>
@@ -46,5 +47,19 @@
 
     <!--    user information page-->
     <string name="user_info_page">我</string>
-    <string name="mylog">MyLog</string>
+    <string name="mylog">我的记录</string>
+
+    <string name="title_activity_set_goal_new">SetGoalActivityNew</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">下一个</string>
+    <string name="previous">之前</string>
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+
+    <string name="all_entry">所有记录</string>
+    <string name="mood">情绪</string>
+    <string name="goal">目标</string>
+    <string name="your_log">你的记录</string>
 </resources>

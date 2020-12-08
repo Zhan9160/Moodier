@@ -16,6 +16,13 @@ public class SetGoal2 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_set_goal2);
         InitEvents();
+        findViewById(R.id.btnCancelCate).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent btnCancelCate_intent = new Intent(SetGoal2.this,MainActivity.class);
+                startActivity(btnCancelCate_intent);
+            }
+        });
 
     }
 
