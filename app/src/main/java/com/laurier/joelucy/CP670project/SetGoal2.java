@@ -47,4 +47,13 @@ public class SetGoal2 extends AppCompatActivity {
         Intent intent = new Intent(SetGoal2.this, CreateNewGoal.class);
         startActivity(intent);
     }
+
+//    private void startCreateNewMood(int catetype){
+//        SharedPreferences sharedPreferences = this.getSharedPreferences("sharedata", MODE_PRIVATE);
+//        SharedPreferences.Editor editor = sharedPreferences.edit();
+//        editor.putString("CategoryType", Integer.toString(categoryType));
+//        editor.commit();
+//        Intent intent = new Intent(SetGoal2.this, CreateNewGoal.class);
+//        startActivity(intent);
+//    }
 }

@@ -27,6 +27,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelProviders;
@@ -41,6 +43,7 @@ import com.laurier.joelucy.CP670project.MainActivity;
 import com.laurier.joelucy.CP670project.MoodDatabaseHelper;
 import com.laurier.joelucy.CP670project.R;
 import com.laurier.joelucy.CP670project.WriteMood;
+import com.laurier.joelucy.CP670project.ui.log.MylogFragment;
 
 import java.util.ArrayList;
 import java.util.SimpleTimeZone;
@@ -78,12 +81,17 @@ public class HomeFragment extends Fragment {
 //                textView.setText(s);
 //            }
 //        });
-//        root.findViewById(R.id.user_information_button).setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//
-//            }
-//        });
+        root.findViewById(R.id.user_information_button).setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("ResourceType")
+            @Override
+            public void onClick(View v) {
+//                Intent mylog_intent = new Intent(getActivity(), MylogFragment.newInstance().getClass());
+//                startActivity(mylog_intent);
+//                FragmentManager fm = getActivity().getSupportFragmentManager();
+//                Fragment fragment = new MylogFragment();
+//                fm.beginTransaction().replace(R.id.id_change,fragment).commit();
+            }
+        });
 
         setView();
         getTopGoal();

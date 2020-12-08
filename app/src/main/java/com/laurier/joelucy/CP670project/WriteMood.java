@@ -10,6 +10,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -25,6 +26,8 @@ import android.widget.ProgressBar;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.laurier.joelucy.CP670project.BD.MySQLiteHelper;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -82,6 +85,7 @@ public class WriteMood extends AppCompatActivity {
                 values.put("message", msg);
                 db.insert(MoodDatabaseHelper.TABLE_NAME, null, values);
                 progress.setProgress(100);
+                SaveMoodData(msg);
             }
         });
         findViewById(R.id.write_mood_back).setOnClickListener(new View.OnClickListener() {
@@ -133,6 +137,33 @@ public class WriteMood extends AppCompatActivity {
         cursor.close();
 
     }
+
+    private void SaveMoodData(String msg) {
+        SharedPreferences msg_pref=getSharedPreferences("sharedata", Context.MODE_PRIVATE);
+
+        String goalCategory=msg_pref.getString("CategoryType", "0");
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        Date date = new Date(System.currentTimeMillis());
+
+        ContentValues values = new ContentValues();
+        values.put(MySQLiteHelper.Mood_ID, goalCategory);
+        values.put(MySQLiteHelper.Mood_Text, msg);
+        values.put(MySQLiteHelper.Mood_CreateOn, date.toString());
+        MySQLiteHelper dbOpenHelper = new MySQLiteHelper(this);
+        SQLiteDatabase database = dbOpenHelper.getReadableDatabase();
+
+        long insertId = database.insert(MySQLiteHelper.TABLE_MoodLog, null,
+                values);
+        String[] columns = {MySQLiteHelper.Mood_ID,
+                MySQLiteHelper.Mood_Text, MySQLiteHelper.Mood_UID};
+        Cursor c = database.query(MySQLiteHelper.TABLE_MoodLog,
+                columns, MySQLiteHelper.Mood_ID + " = " + insertId, null,
+                null, null, null);
+        c.moveToFirst();
+        Log.i("goal is : " ,c.getString(1));
+        c.close();
+    }
+
     @Override
     protected void onDestroy() {
         super.onDestroy();

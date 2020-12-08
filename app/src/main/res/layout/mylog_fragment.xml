@@ -14,7 +14,6 @@
         android:layout_margin="1dp" />
 
 
-
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -24,22 +23,22 @@
             android:id="@+id/btnDisplayall"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/all_entry"
-            android:background="@drawable/buttonshape2"/>
+            android:background="@drawable/buttonshape2"
+            android:text="@string/all_entry" />
 
         <Button
             android:id="@+id/btnDisplayMoods"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/mood"
-            android:background="@drawable/buttonshape"/>
+            android:background="@drawable/buttonshape"
+            android:text="@string/mood" />
 
         <Button
             android:id="@+id/btnDisplayGoals"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/goal"
-            android:background="@drawable/buttonshape_down"/>
+            android:background="@drawable/buttonshape_down"
+            android:text="@string/goal" />
 
     </LinearLayout>
 
@@ -47,9 +46,9 @@
         android:id="@+id/txtDate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@drawable/buttonshape2"
         android:text="@string/your_log"
-        android:textAlignment="center"
-        android:background="@drawable/buttonshape2" />
+        android:textAlignment="center" />
 
     <ListView
         android:id="@+id/lstLog"

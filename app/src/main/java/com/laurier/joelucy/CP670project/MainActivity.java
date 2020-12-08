@@ -85,20 +85,10 @@ public class MainActivity extends AppCompatActivity {
         Log.i(ACTIVITY_NAME, "In onCreate()");
     }
 
-    public void get_mylog_activity(View v){
-        Intent mylog_intent = new Intent(MainActivity.this, MylogFragment.class);
-        startActivityForResult(mylog_intent,1);
-//        IntentFilter filter = new IntentFilter();
-//        filter.addAction();
-
-//        switchFragment(new MylogFragment());
-
-    }
-//private void switchFragment(Fragment f) {
-//    FragmentManager fragmentM = getSupportFragmentManager();//管理对象
-//    FragmentTransaction trans = fragmentM.beginTransaction();//切换碎片
-//    trans.replace(R.id.nav_host_fragment, f);
-//    trans.commit();
-//}
-
+//    public void get_mylog_activity(View v){
+//        FragmentManager fm = getFragmentManager();
+//        MylogFragment myLog = new MylogFragment();
+//        FragmentTransaction transaction = fm.beginTransaction();
+//        transaction.commit();
+//    }
 }
