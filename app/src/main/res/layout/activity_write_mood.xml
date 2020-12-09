@@ -50,6 +50,8 @@
         android:id="@+id/write_mood"
         android:layout_width="match_parent"
         android:layout_height="267dp"
+        android:gravity="start|top"
+        android:inputType="textMultiLine"
         android:ems="10" />
 
 
