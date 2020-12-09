@@ -32,7 +32,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:onClick="go_to_moodhistory"
-            android:text="@string/view_mood_record"
+            android:text="view mood record"
             tools:ignore="OnClick" />
     </LinearLayout>
 
@@ -59,7 +59,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:onClick="get_mylog_activity"
-            android:text="@string/title_activity_test_your_mood"
+            android:text="test your mood"
             tools:ignore="OnClick" />
 
     </LinearLayout>

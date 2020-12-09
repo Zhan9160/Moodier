@@ -13,7 +13,7 @@
     <string name="About">About</string>
 
     <!--    Log mood activity-->
-    <string name="mood_info">How Are You Feeling Today?(Use the slider to choose)</string>
+    <string name="mood_info">How Are You Feeling Today?  (Use the slider to choose what best describes your mood)</string>
     <string name="mood_continue">Continue</string>
     <string name="view_mood_record">View mood records</string>
     <string name="clear_record">Clear Records</string>

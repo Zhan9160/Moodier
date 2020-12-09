@@ -27,7 +27,7 @@
             android:textColor="#F9F6F6" />
 
 
-        <Button
+<!--        <Button
             android:id="@+id/submit_new_mood2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -35,20 +35,22 @@
 
             android:onClick="go_to_moodhistory"
             android:text="view_mood_record"
-            android:textColor="#F9F6F6" />
+            android:textColor="#F9F6F6" />-->
     </LinearLayout>
 
     <TextView
         android:id="@+id/textView4"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="log_your_mood"
+        android:layout_marginTop="5dp"
+        android:text="log_your_mood："
 
         android:textSize="18sp"
         android:textStyle="bold" />
     <EditText
         android:id="@+id/write_mood"
         android:layout_width="match_parent"
+        android:layout_marginTop="5dp"
         android:layout_height="267dp"
         android:gravity="start|top"
         android:inputType="textMultiLine"

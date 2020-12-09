@@ -48,7 +48,7 @@ public class LogMoodActivity extends AppCompatActivity {
                                 .setAction("Action",new View.OnClickListener(){
                                     @Override
                                     public void onClick(View view) {
-                                        snackbar = snackbar.setText(""+progress);
+                                        //snackbar = snackbar.setText(""+progress);
 
                                     }
                                 }).show();
@@ -60,7 +60,7 @@ public class LogMoodActivity extends AppCompatActivity {
                             .setAction("Action",new View.OnClickListener(){
                                 @Override
                                 public void onClick(View view) {
-                                    snackbar = snackbar.setText("Bad"+progress);
+                                    //snackbar.setText("Bad"+progress);
 
                                 }
                             }).show();
@@ -72,7 +72,7 @@ public class LogMoodActivity extends AppCompatActivity {
                                 .setAction("Action",new View.OnClickListener(){
                                     @Override
                                     public void onClick(View view) {
-                                        snackbar = snackbar.setText("Bad"+progress);
+                                       // snackbar = snackbar.setText("okey"+progress);
 
                                     }
                                 }).show();
@@ -84,7 +84,7 @@ public class LogMoodActivity extends AppCompatActivity {
                                 .setAction("Action",new View.OnClickListener(){
                                     @Override
                                     public void onClick(View view) {
-                                        snackbar = snackbar.setText("Bad"+progress);
+                                        //snackbar = snackbar.setText("nice"+progress);
 
                                     }
                                 }).show();
@@ -96,7 +96,7 @@ public class LogMoodActivity extends AppCompatActivity {
                                 .setAction("Action",new View.OnClickListener(){
                                     @Override
                                     public void onClick(View view) {
-                                        snackbar = snackbar.setText("Very good"+progress);
+                                       // snackbar = snackbar.setText("Very good"+progress);
 
                                     }
                                 }).show();
@@ -108,7 +108,7 @@ public class LogMoodActivity extends AppCompatActivity {
                                 .setAction("Action",new View.OnClickListener(){
                                     @Override
                                     public void onClick(View view) {
-                                        snackbar = snackbar.setText("Excellent"+progress);
+                                        //snackbar = snackbar.setText("Excellent"+progress);
 
                                     }
                                 }).show();
@@ -131,7 +131,7 @@ public class LogMoodActivity extends AppCompatActivity {
 
             }
         });
-        Button button = findViewById(R.id.set_mood_button);
+        Button button = findViewById(R.id.btnMoodContinue);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -142,9 +142,7 @@ public class LogMoodActivity extends AppCompatActivity {
         });
     }
 
-    public void onbtnContinueClick(View view) {
 
-    }
 //    public void get_writemood_activity(View v){
 //        Intent log_mood_intent = new Intent(LogMoodActivity.this,WriteMood.class);
 //        startActivity(log_mood_intent);

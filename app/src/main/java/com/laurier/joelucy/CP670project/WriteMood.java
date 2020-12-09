@@ -76,6 +76,11 @@ public class WriteMood extends AppCompatActivity {
         sendButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (textInput.getText().toString().trim().isEmpty())
+                {
+                    showDialog();
+                    return;
+                }
                 String msg = simpleDateFormat.format(date)+text_feel.getText().toString() +"\n" + textInput.getText().toString();
 
                 list.add(msg);
@@ -86,6 +91,7 @@ public class WriteMood extends AppCompatActivity {
                 db.insert(MoodDatabaseHelper.TABLE_NAME, null, values);
                 progress.setProgress(100);
                 SaveMoodData(msg);
+                returnHome();
             }
         });
         findViewById(R.id.write_mood_back).setOnClickListener(new View.OnClickListener() {
@@ -139,14 +145,12 @@ public class WriteMood extends AppCompatActivity {
     }
 
     private void SaveMoodData(String msg) {
-        SharedPreferences msg_pref=getSharedPreferences("sharedata", Context.MODE_PRIVATE);
 
-        String goalCategory=msg_pref.getString("CategoryType", "0");
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         Date date = new Date(System.currentTimeMillis());
 
         ContentValues values = new ContentValues();
-        values.put(MySQLiteHelper.Mood_ID, goalCategory);
+        //values.put(MySQLiteHelper.Mood_ID, goalCategory);
         values.put(MySQLiteHelper.Mood_Text, msg);
         values.put(MySQLiteHelper.Mood_CreateOn, date.toString());
         MySQLiteHelper dbOpenHelper = new MySQLiteHelper(this);
@@ -154,14 +158,14 @@ public class WriteMood extends AppCompatActivity {
 
         long insertId = database.insert(MySQLiteHelper.TABLE_MoodLog, null,
                 values);
-        String[] columns = {MySQLiteHelper.Mood_ID,
+/*        String[] columns = {MySQLiteHelper.Mood_ID,
                 MySQLiteHelper.Mood_Text, MySQLiteHelper.Mood_UID};
         Cursor c = database.query(MySQLiteHelper.TABLE_MoodLog,
                 columns, MySQLiteHelper.Mood_ID + " = " + insertId, null,
                 null, null, null);
         c.moveToFirst();
         Log.i("goal is : " ,c.getString(1));
-        c.close();
+        c.close();*/
     }
 
     @Override
@@ -209,6 +213,29 @@ public class WriteMood extends AppCompatActivity {
             startActivity(intent_moodhistory);
         }
 
+
+    }
+
+    private void returnHome()
+    {
+        Intent intent = new Intent(WriteMood.this, MainActivity.class);
+        startActivity(intent);
+    }
+
+    private void showDialog(){
+        android.app.AlertDialog.Builder builder=new android.app.AlertDialog.Builder(this);
+        //builder.setIcon(R.drawable.picture);
+        builder.setTitle("Tips");
+        builder.setMessage("please input mood text");
+        builder.setPositiveButton("OK",
+                new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+
+                    }
+                });
+        android.app.AlertDialog dialog=builder.create();
+        dialog.show();
 
     }
 }
