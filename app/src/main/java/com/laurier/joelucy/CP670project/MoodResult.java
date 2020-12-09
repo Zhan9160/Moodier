@@ -3,6 +3,7 @@ package com.laurier.joelucy.CP670project;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.FragmentTransaction;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -26,12 +27,14 @@ public class MoodResult extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mood_result);
 
-        Intent intent =getIntent();
-        result = intent.getStringExtra("result");
+        SharedPreferences preferences=getSharedPreferences("sharedata", Context.MODE_PRIVATE);
+        result = preferences.getString("testMoodResult","");
+        /*Intent intent =getIntent();
+        result = intent.getStringExtra("result");*/
         textInput = findViewById(R.id.mood_result);
         textInput.setText(result);
 
-        InitEvents();
+        //InitEvents();
 
         findViewById(R.id.mood_result_back_button).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -40,23 +43,38 @@ public class MoodResult extends AppCompatActivity {
 //                SharedPreferences.Editor editor = mySharedPreferences.edit();
 //                editor.putString("mood", result);
 //                editor.commit();
-                Intent back_intent = new Intent(MoodResult.this,MoodFragment.class);
+
 //                Intent back_intent = new Intent(MoodResult.this,MainActivity.class);
+
+              /*  Intent back_intent = new Intent(MoodResult.this,MoodFragment.class);
                 back_intent.putExtra("result",result);
-                startActivity(back_intent);
+                startActivity(back_intent);*/
+                returnBack();
+
             }
         });
 
+        //findViewById(R.id)
+
     }
 
-    private void InitEvents() {
+   /* private void InitEvents() {
         SharedPreferences sharedPreferences = this.getSharedPreferences("moodResult", MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putString("result", result);
         editor.commit();
 //        Intent intent = new Intent(MoodResult.this, CreateNewGoal.class);
 //        startActivity(intent);
+    }*/
+
+    private void returnHome()
+    {
+        Intent intent = new Intent(MoodResult.this, MainActivity.class);
+        startActivity(intent);
     }
 
-
+    private  void returnBack()
+    {
+        this.finish();
+    }
 }

@@ -3,11 +3,13 @@ package com.laurier.joelucy.CP670project;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
@@ -20,6 +22,7 @@ public class TestYourMood extends AppCompatActivity {
     RadioButton no1, no2, no3;
     RadioGroup group1, group2, group3;
     String result;
+    int resultType;
 
     //    TextView tv;
     @Override
@@ -86,7 +89,9 @@ public class TestYourMood extends AppCompatActivity {
                 }
             }
         });
-        findViewById(R.id.button_submit_test).setOnClickListener(new View.OnClickListener() {
+
+        Button btnSeeResult = (Button)findViewById(R.id.btnSeeResult);
+               btnSeeResult.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 int optionID1 = group1.getCheckedRadioButtonId();
@@ -95,18 +100,47 @@ public class TestYourMood extends AppCompatActivity {
                 TextView tv = findViewById(R.id.invisible_result);
                 if (optionID1 == R.id.yes1 & optionID2 == R.id.yes2 & optionID3 == R.id.yes3) {
                     result = "You are an optimistic person. Good luck:)";
+                    resultType = 1;
                 } else if (optionID1 == R.id.no1 & optionID2 == R.id.no2 & optionID3 == R.id.no3) {
                     result = "Oh no. You should be positive. Suggest you to see a doctor.:(";
+                    resultType = 2;
                 } else {
                     result = "You should be careful. Some mental health problems may occur if you do not share your thought with your friends or family. Be relax!:)";
+                    resultType= 3;
                 }
                 tv.setText(result);
 
-                Intent result_intent = new Intent(TestYourMood.this, MoodResult.class);
-                result_intent.putExtra("result",result);
-                startActivity(result_intent);
             }
         });
 
+        findViewById(R.id.submitTestResult).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SubmitResult();
+            }
+        });
+
+        findViewById(R.id.btnCancelTest).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                CloseWindow();
+            }
+        });
+    }
+
+    private  void SubmitResult()
+    {
+        if (result == null)
+            return;
+        SharedPreferences sharedPreferences = getSharedPreferences("sharedata", MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString("testMoodResult", result);
+        editor.putInt("testMoodResultType", resultType);
+        editor.commit();
+        CloseWindow();
+    }
+
+    private void CloseWindow() {
+        this.finish();
     }
 }
