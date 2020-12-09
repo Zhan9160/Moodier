@@ -11,11 +11,11 @@
         android:label="@string/title_home"
         tools:layout="@layout/fragment_home" />
 
-    <fragment
+<!--    <fragment
         android:id="@+id/navigation_goals"
         android:name="com.laurier.joelucy.CP670project.ui.goals.GoalsFragment"
         android:label="@string/title_goals"
-        tools:layout="@layout/fragment_goals" />
+        tools:layout="@layout/fragment_goals" />-->
 
     <fragment
         android:id="@+id/navigation_mood"

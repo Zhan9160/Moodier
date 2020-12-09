@@ -2,6 +2,8 @@ package com.laurier.joelucy.CP670project;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
@@ -131,16 +133,38 @@ public class TestYourMood extends AppCompatActivity {
     private  void SubmitResult()
     {
         if (result == null)
-            return;
-        SharedPreferences sharedPreferences = getSharedPreferences("sharedata", MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putString("testMoodResult", result);
-        editor.putInt("testMoodResultType", resultType);
-        editor.commit();
-        CloseWindow();
+        {
+            showDialog();
+        }
+        else {
+            SharedPreferences sharedPreferences = getSharedPreferences("sharedata", MODE_PRIVATE);
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+            editor.putString("testMoodResult", result);
+            editor.putInt("testMoodResultType", resultType);
+            editor.commit();
+            CloseWindow();
+        }
     }
 
     private void CloseWindow() {
         this.finish();
     }
+
+    private void showDialog(){
+        AlertDialog.Builder builder=new AlertDialog.Builder(this);
+        //builder.setIcon(R.drawable.picture);
+        builder.setTitle("Tips");
+        builder.setMessage("please check results firstly");
+        builder.setPositiveButton("OK",
+                new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+
+                    }
+                });
+        AlertDialog dialog=builder.create();
+        dialog.show();
+
+    }
 }
+
