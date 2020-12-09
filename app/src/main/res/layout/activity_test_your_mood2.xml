@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".TestYourMood">
+
+    <TextView
+        android:id="@+id/question1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="58dp"
+        android:text="Are you happy every moment?"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/question2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="5dp"
+        android:text="Are you always have friends to talk with?"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/group1"
+        tools:ignore="MissingConstraints" />
+
+    <RadioGroup
+        android:id="@+id/group2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/question2">
+
+        <RadioButton
+            android:id="@+id/yes2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Yes"
+            android:textSize="18sp"
+            tools:layout_editor_absoluteX="82dp"
+            tools:layout_editor_absoluteY="399dp" />
+
+        <RadioButton
+            android:id="@+id/no2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="No"
+            android:textSize="18sp"
+            tools:layout_editor_absoluteX="82dp"
+            tools:layout_editor_absoluteY="399dp" />
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/question3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="Do you feel lonely?"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/group2"
+        tools:ignore="MissingConstraints" />
+
+    <RadioGroup
+        android:id="@+id/group3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/question3">
+
+        <RadioButton
+            android:id="@+id/yes3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Yes"
+            android:textSize="18sp"
+            tools:layout_editor_absoluteX="82dp"
+            tools:layout_editor_absoluteY="399dp" />
+
+        <RadioButton
+            android:id="@+id/no3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="No"
+            android:textSize="18sp"
+            tools:layout_editor_absoluteX="82dp"
+            tools:layout_editor_absoluteY="399dp" />
+    </RadioGroup>
+
+    <RadioGroup
+        android:id="@+id/group1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/question1">
+
+        <RadioButton
+            android:id="@+id/yes1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Yes"
+            android:textSize="18sp"
+            tools:layout_editor_absoluteX="82dp"
+            tools:layout_editor_absoluteY="399dp" />
+
+        <RadioButton
+            android:id="@+id/no1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="No"
+            android:textSize="18sp"
+            tools:layout_editor_absoluteX="82dp"
+            tools:layout_editor_absoluteY="399dp" />
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/button_submit_test"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="139dp"
+        android:layout_marginBottom="56dp"
+
+        android:text="See result"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/invisible_result"
+        android:layout_width="193dp"
+        android:layout_height="33dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginBottom="47dp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/button_submit_test"
+        app:layout_constraintStart_toStartOf="@+id/button_submit_test" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

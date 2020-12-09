@@ -44,6 +44,8 @@
     <string name="PasswordName">密码</string>
     <string name="LoginButton">登陆</string>
 
+    <string name="title_activity_test_your_mood">情绪测试</string>
+
 
     <!--    user information page-->
     <string name="user_info_page">我</string>

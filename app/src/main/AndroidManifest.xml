@@ -10,9 +10,10 @@
         android:roundIcon="@drawable/smile1"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".CreateNewGoal"></activity>
+        <activity android:name=".MoodResult"></activity>
+        <activity android:name=".TestYourMood" />
+        <activity android:name=".CreateNewGoal" />
         <activity android:name=".SetGoal2" />
-
         <activity android:name=".GoalDetail" />
         <activity
             android:name=".ToolBarActivity"

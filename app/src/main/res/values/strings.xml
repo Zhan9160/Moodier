@@ -59,6 +59,7 @@
     <string name="mood">Mood</string>
     <string name="goal">Goal</string>
     <string name="your_log">Your log</string>
+    <string name="title_activity_test_your_mood">TestYourMood</string>
 
 
 </resources>

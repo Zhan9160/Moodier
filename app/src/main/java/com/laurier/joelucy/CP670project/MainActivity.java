@@ -86,6 +86,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
 //    public void get_mylog_activity(View v){
+//        Intent radioTest_intent = new Intent(MainActivity.this,TestYourMood.class);
+//        startActivity(radioTest_intent);
 //        FragmentManager fm = getFragmentManager();
 //        MylogFragment myLog = new MylogFragment();
 //        FragmentTransaction transaction = fm.beginTransaction();
