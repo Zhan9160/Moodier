@@ -34,6 +34,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 public class MylogFragment extends Fragment {
 
@@ -101,7 +102,8 @@ public class MylogFragment extends Fragment {
             @Override
             public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth) {
                 TextView textView = (TextView) rView.findViewById(R.id.txtDate);
-                strDate = year+"-"+month+"-"+dayOfMonth;
+                int realMonth= month+1;
+                strDate = year+"-"+realMonth+"-"+dayOfMonth;
                 textView.setText(strDate);
 
                 try {
@@ -204,17 +206,26 @@ public class MylogFragment extends Fragment {
     }
     private List<LogItem> filterbyDate(List<LogItem> listItems, String stringDate) throws ParseException {
         List<LogItem> values = new ArrayList<>();
-        String formatType = "yyyy-MM-dd";
-        SimpleDateFormat formatter = new SimpleDateFormat(formatType);
-        Date date = null;
-        date = formatter.parse(stringDate);
 
+        SimpleDateFormat sf = new SimpleDateFormat("EEE MMM dd HH:mm:ss Z yyyy", new Locale("ENGLISH", "CHINA"));
+
+        Date date = null;
+        //date = formatter.parse(stringDate);
+        String strdate1;
         for(int i=0;i<listItems.size();i++)
         {
-            if(formatter.parse(listItems.get(i).CreateOn) == date)
-            {
-                values.add(listItems.get(i));
-            }
+            String strCreateOn = listItems.get(i).CreateOn;
+
+                date= sf.parse(strCreateOn);
+                SimpleDateFormat sdf2 = new SimpleDateFormat("yyyy-M-d", new Locale("CHINESE", "CHINA"));
+                strdate1 = sdf2.format(date);
+                if(strdate1.equals( stringDate))
+                {
+                    values.add(listItems.get(i));
+                }
+
+
+
         }
 
         return values;

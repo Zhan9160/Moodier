@@ -36,6 +36,40 @@ public class SetGoal2 extends AppCompatActivity {
                 startCreateNewGoal(catetype);
             }
         });
+        TextView textView2 = (TextView) findViewById(R.id.willnessGoal);
+        textView2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                catetype =2;
+                startCreateNewGoal(catetype);
+            }
+        });
+
+        TextView textView3 = (TextView) findViewById(R.id.workgoal);
+        textView3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                catetype =3;
+                startCreateNewGoal(catetype);
+            }
+        });
+
+        TextView textView4 = (TextView) findViewById(R.id.homeFamilyGoal);
+        textView4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                catetype =4;
+                startCreateNewGoal(catetype);
+            }
+        });
+        TextView textView5 = (TextView) findViewById(R.id.socialGoal);
+        textView5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                catetype =5;
+                startCreateNewGoal(catetype);
+            }
+        });
     }
 
     private void startCreateNewGoal(int categoryType)

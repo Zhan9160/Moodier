@@ -7,21 +7,45 @@
     tools:context=".SetGoal2"
     android:orientation="vertical">
 
-    <Button
-        android:id="@+id/btnCancelCate"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/cancel" />
+        android:background="#9C27B0"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btnCancelCate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#9C27B0"
+            android:text="@string/cancel"
+            android:textColor="#F9F6F6" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="      Select Goal Category"
+            android:textColor="#F9F4F4"
+            android:textSize="18sp" />
+    </LinearLayout>
 
     <TextView
         android:id="@+id/goalCateText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginBottom="10dp"
         android:text="To help kee you motivated towards achieving your goal, start with an area"></TextView>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginBottom="10dp"
         android:orientation="horizontal">
 
 
@@ -29,7 +53,7 @@
             android:id="@+id/imageButton2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/ic_baseline_arrow_forward_24"
+            android:background="@drawable/c1"
             android:clickable="false" />
 
         <TextView
@@ -37,9 +61,108 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:clickable="true"
-            android:text=" Treatment\n Create Goals around managing your medication and working with your care team"
+            android:focusable="true"
+            android:text=" Treatment\n Create Goals around managing your medication and
+            working with your care team"></TextView>
+
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginBottom="10dp"
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:id="@+id/imageButton4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/c2"
+            android:clickable="false" />
+
+    <TextView
+        android:id="@+id/willnessGoal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:text=" Wellness\n Set Goals that are focused on areas such as eating healthier, exercising, and relaxing."
+        android:focusable="true"></TextView>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginBottom="10dp"
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:id="@+id/imageButton3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/c3"
+            android:clickable="false" />
+
+        <TextView
+            android:id="@+id/workgoal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:text=" Work\n Focus on your job by setting goals like completing tasks, staying organized, and building relationships at work."
             android:focusable="true"></TextView>
     </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginBottom="10dp"
+        android:orientation="horizontal">
 
+        <ImageButton
+            android:id="@+id/imageButton5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/c4"
+            android:clickable="false" />
 
+        <TextView
+            android:id="@+id/homeFamilyGoal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:text=" Home and Family\n Give attention to goals such as spending more
+             time with your family or staying on track with weely chores."
+            android:focusable="true"></TextView>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginBottom="10dp"
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:id="@+id/imageButton6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/c5"
+            android:clickable="false" />
+
+        <TextView
+            android:id="@+id/socialGoal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:text=" Social\n WOrk on building and strenghtening
+            relationships and getting involved in activities."
+            android:focusable="true"></TextView>
+    </LinearLayout>
 </LinearLayout>
