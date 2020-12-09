@@ -12,6 +12,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
@@ -27,9 +28,17 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         Log.i(ACTIVITY_NAME, "In onCreate()");
-        Toolbar toolbar = (Toolbar)findViewById(R.id.toolbar);
+        Toolbar toolbar = (Toolbar)findViewById(R.id.toolbarlogin);
         setSupportActionBar(toolbar);
+        //toolbar.inflateMenu(R.menu.menu_main);
         loadData();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        //return super.onCreateOptionsMenu(menu);
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
     }
 
     public void startActivity(View view) {
@@ -59,7 +68,7 @@ public class LoginActivity extends AppCompatActivity {
 
     }
     public void onOptionItemSelected(MenuItem item) {
-        Toast toast = Toast.makeText(this , "Version 1.0 by Peiyu Lu", Toast.LENGTH_LONG); //this is the ListActivity
+        Toast toast = Toast.makeText(this , "Version 1.0 by Peiyu Lu & An Zhang", Toast.LENGTH_LONG); //this is the ListActivity
         toast.show(); //display your message box
     }
 

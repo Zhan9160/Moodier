@@ -11,10 +11,12 @@
 <!--        layout="@layout/activity_tool_bar" />-->
 <!--    -->
     <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
+        android:id="@+id/toolbarlogin"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="?attr/actionBarSize"
+
         android:background="@android:color/holo_orange_light"
+        app:popupTheme="@style/AppTheme.PopupOverlay"
         app:menu="@menu/menu_main" />
 
     <LinearLayout
