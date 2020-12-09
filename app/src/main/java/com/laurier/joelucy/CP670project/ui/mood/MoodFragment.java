@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -14,14 +15,22 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
+import com.laurier.joelucy.CP670project.ListMoodRecord;
 import com.laurier.joelucy.CP670project.LogMoodActivity;
 import com.laurier.joelucy.CP670project.MainActivity;
 import com.laurier.joelucy.CP670project.R;
 import com.laurier.joelucy.CP670project.WriteMood;
 
+import org.w3c.dom.Text;
+
+import java.util.ArrayList;
+
 public class MoodFragment extends Fragment {
 
     private MoodViewModel notificationsViewModel;
+    String result;
+    ListView listView;
+    private ArrayList<String> list;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -37,6 +46,18 @@ public class MoodFragment extends Fragment {
         });
 //        View.OnClickListener listener = new
 //        root.findViewById(R.id.set_mood_button)
+        Intent intent =getActivity().getIntent();
+        result = intent.getStringExtra("result");
+        TextView tv = root.findViewById(R.id.recyclerView_moodResult);
+        tv.setText(result);
+
+//        listView = root.findViewById(R.id.recyclerView_moodRecord);
+//        list = new ArrayList<>();
+//
+//        messageAdapter =new ListMoodRecord.MoodAdapter( this );
+//        listView.setAdapter(messageAdapter);
+//        View view = root.findViewById(R.id.recyclerView_moodResult);
+//        listView.setAdapter(messageAdapter);
 
         return root;
     }

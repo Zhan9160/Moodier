@@ -59,7 +59,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:onClick="get_mylog_activity"
-            android:text="@string/user_info_page"
+            android:text="@string/title_activity_test_your_mood"
             tools:ignore="OnClick" />
 
     </LinearLayout>
