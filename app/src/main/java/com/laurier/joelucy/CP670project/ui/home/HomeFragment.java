@@ -42,6 +42,7 @@ import com.laurier.joelucy.CP670project.ListMoodRecord;
 import com.laurier.joelucy.CP670project.MainActivity;
 import com.laurier.joelucy.CP670project.MoodDatabaseHelper;
 import com.laurier.joelucy.CP670project.R;
+import com.laurier.joelucy.CP670project.TestYourMood;
 import com.laurier.joelucy.CP670project.WriteMood;
 import com.laurier.joelucy.CP670project.ui.log.MylogFragment;
 
@@ -95,6 +96,13 @@ public class HomeFragment extends Fragment {
 
         setView();
         getTopGoal();
+        root.findViewById(R.id.user_information_button).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent radioTest_intent = new Intent(getActivity(), TestYourMood.class);
+                startActivity(radioTest_intent);
+            }
+        });
 
         return root;
     }
