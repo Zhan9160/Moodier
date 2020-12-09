@@ -51,8 +51,8 @@ public class ListMoodRecord extends AppCompatActivity {
         LayoutInflater factory = LayoutInflater.from(ListMoodRecord.this);
         View layout = factory.inflate(R.layout.activity_write_mood, null);
 //        TextView textInput = (TextView) layout.findViewById(R.id.write_mood);
-        textInput = (EditText)layout.findViewById(R.id.write_mood);
-        submit = (Button)layout.findViewById(R.id.submit_new_mood);
+/*        textInput = (EditText)layout.findViewById(R.id.write_mood);
+        submit = (Button)layout.findViewById(R.id.submit_new_mood);*/
 
 //        LayoutInflater log_mood_activity = LayoutInflater.from(ListMoodRecord.this);
 //        View log_mood_layout = factory.inflate(R.layout.activity_log_mood, null);
@@ -65,7 +65,7 @@ public class ListMoodRecord extends AppCompatActivity {
        // Log.i(ACTIVITY_NAME,"" + textInput);
         //Button sendButton = findViewById(R.id.sendButton);
         //findViewById(R.id.submit_new_mood).setOnClickListener(new View.OnClickListener(){
-        submit.setOnClickListener(new View.OnClickListener(){
+/*        submit.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
                 String message = textInput.getText().toString();
                 list.add(message);
@@ -77,7 +77,7 @@ public class ListMoodRecord extends AppCompatActivity {
                 db.insert(MoodDatabaseHelper.TABLE_NAME,null,cv);
 
             }
-        });
+        });*/
         db_helper = new MoodDatabaseHelper(this);
         //gets a writeable database
         db = db_helper.getReadableDatabase();
@@ -105,8 +105,9 @@ public class ListMoodRecord extends AppCompatActivity {
 
 
     public void return_to_main(View v){
-        Intent intent_to_main = new Intent(ListMoodRecord.this,MainActivity.class);
-        startActivity(intent_to_main);
+/*        Intent intent_to_main = new Intent(ListMoodRecord.this,MainActivity.class);
+        startActivity(intent_to_main);*/
+        finish();
     }
 
     public void clear_record(View v){

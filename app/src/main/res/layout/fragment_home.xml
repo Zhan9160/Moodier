@@ -1,77 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/id_change"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".ui.home.HomeFragment">
 
     <LinearLayout
-        android:id="@+id/linearLayout_left"
-        android:layout_width="200dp"
-        android:layout_height="100dp"
-        android:layout_marginStart="6dp"
-        android:layout_marginEnd="5dp"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
-        app:layout_constraintEnd_toStartOf="@+id/linearLayout_right"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/scrollView3">
-
-        <Button
-            android:id="@+id/set_goal_button"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:onClick="get_setgoal_activity"
-            android:text="@string/set_a_goal"
-            tools:ignore="OnClick" />
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#3F51B5"
+        android:orientation="horizontal">
 
         <Button
             android:id="@+id/moodRecord_button"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="#3F51B5"
             android:onClick="go_to_moodhistory"
             android:text="view mood record"
-            tools:ignore="OnClick" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/linearLayout_right"
-        android:layout_width="200dp"
-        android:layout_height="100dp"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/linearLayout_left"
-        app:layout_constraintTop_toBottomOf="@+id/scrollView3">
-
-        <Button
-            android:id="@+id/set_mood_button"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:onClick="get_logmood_activity"
-            android:text="@string/log_your_mood"
+            android:textAlignment="textStart"
+            android:textColor="#FEFFFF"
             tools:ignore="OnClick" />
 
         <Button
             android:id="@+id/user_information_button"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="#3F51B5"
             android:onClick="get_mylog_activity"
             android:text="test your mood"
+            android:textAlignment="textEnd"
+            android:textColor="#FEFFFF"
             tools:ignore="OnClick" />
 
     </LinearLayout>
-
     <ScrollView
         android:id="@+id/scrollView3"
-        android:layout_width="407dp"
-        android:layout_height="274dp"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout_right"
-        app:layout_constraintEnd_toEndOf="@+id/linearLayout_left"
-        app:layout_constraintStart_toEndOf="@+id/linearLayout_left"
-        app:layout_constraintTop_toTopOf="parent">
+        android:layout_width="match_parent"
+        android:layout_height="250dp">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -91,7 +62,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="25dp"
                     android:layout_gravity="bottom"
-                    android:layout_marginTop="5dp"
                     android:background="#E6E6E6"
                     android:gravity="center"
                     android:orientation="horizontal">
@@ -133,38 +103,55 @@
     </ScrollView>
 
     <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/set_goal_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="#673AB7"
+            android:onClick="get_setgoal_activity"
+            android:text="@string/set_a_goal"
+            android:textColor="#FFFFFF"
+            tools:ignore="OnClick" />
+
+        <Button
+            android:id="@+id/set_mood_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="#FF9800"
+            android:onClick="get_logmood_activity"
+            android:text="@string/log_your_mood"
+            android:textColor="#F9F5F5"
+            tools:ignore="OnClick" />
+
+    </LinearLayout>
+    <LinearLayout
         android:id="@+id/linearLayout2"
         android:layout_width="match_parent"
-        android:layout_height="308dp"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/linearLayout_left"
-        app:layout_constraintStart_toEndOf="@+id/linearLayout_left"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout_right">
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
         <TextView
             android:id="@+id/top_goal1"
             android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:ems="10"
-            android:gravity="start|top" />
+            android:layout_height="50dp"
+             />
 
         <TextView
             android:id="@+id/top_goal2"
             android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:ems="10"
-            android:gravity="start|top" />
+            android:layout_height="50dp"
+         />
 
         <TextView
             android:id="@+id/top_goal3"
             android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:ems="10"
-            android:gravity="start|top" />
-        <!--        <ListView-->
-        <!--            android:id="@+id/home_goal_listview"-->
-        <!--            android:layout_width="match_parent"-->
-        <!--            android:layout_height="match_parent" />-->
+            android:layout_height="50dp"
+        />
     </LinearLayout>
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>
