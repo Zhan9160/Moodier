@@ -117,8 +117,19 @@
             android:layout_height="wrap_content"
             android:text="No"
             android:textSize="18sp" />
+
+
     </RadioGroup>
 
+    <TextView
+        android:id="@+id/txtViewTimeB"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="20dp"
+        android:text=""
+        android:textAlignment="center"
+        android:textColor="#091C84"
+        android:textSize="24sp" />
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

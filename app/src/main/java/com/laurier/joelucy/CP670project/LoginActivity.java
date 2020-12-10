@@ -2,6 +2,8 @@ package com.laurier.joelucy.CP670project;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -23,6 +25,7 @@ import com.google.android.material.tooltip.TooltipDrawable;
 public class LoginActivity extends AppCompatActivity {
     protected static final String ACTIVITY_NAME="LoginActivity";
     private EditText username, password;
+    //int versionCode;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -67,11 +70,23 @@ public class LoginActivity extends AppCompatActivity {
         myEdit.commit();
 
     }
-    public void onOptionItemSelected(MenuItem item) {
-        Toast toast = Toast.makeText(this , "Version 1.0 by Peiyu Lu & An Zhang", Toast.LENGTH_LONG); //this is the ListActivity
+    public void onOptionItemSelected(MenuItem item) throws PackageManager.NameNotFoundException {
+        String verName = getVersionName();
+        Toast toast = Toast.makeText(this , "Version "+ verName
+                        +" by Peiyu Lu & An Zhang",
+                Toast.LENGTH_LONG); //this is the ListActivity
         toast.show(); //display your message box
     }
 
+    private String getVersionName() throws PackageManager.NameNotFoundException {
+        // get packageinstance
+        PackageManager packageManager = getPackageManager();
+        // getPackageName()current package，0 version
+        PackageInfo packInfo = packageManager.getPackageInfo(getPackageName(),0);
+        String version = packInfo.versionName;
+        //versionCode = packInfo.versionCode;
+        return version;
+    }
 
     @Override
     protected void onStart() {

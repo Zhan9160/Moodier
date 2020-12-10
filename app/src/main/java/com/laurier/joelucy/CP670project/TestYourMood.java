@@ -7,6 +7,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -25,12 +26,15 @@ public class TestYourMood extends AppCompatActivity {
     RadioGroup group1, group2, group3;
     String result;
     int resultType;
+    TextView tv;
 
     //    TextView tv;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_test_your_mood2);
+
+        tv = findViewById(R.id.txtViewTimeB);
 
         group1 = findViewById(R.id.group1);
         yes1 = findViewById(R.id.yes1);
@@ -110,6 +114,8 @@ public class TestYourMood extends AppCompatActivity {
                     result = "You should be careful. Some mental health problems may occur if you do not share your thought with your friends or family. Be relax!:)";
                     resultType= 3;
                 }
+
+                new MyTask().execute(10);
                 tv.setText(result);
 
             }
@@ -165,6 +171,33 @@ public class TestYourMood extends AppCompatActivity {
         AlertDialog dialog=builder.create();
         dialog.show();
 
+    }
+    // define asyncTask
+    class MyTask extends AsyncTask<Integer,Integer,String> {
+        @Override
+        protected String doInBackground(Integer... integers) {
+            for (int i = integers[0]; i > 0; i--) {
+                try {
+                    Thread.sleep(1000);
+                    publishProgress(i);//调用onProgressUpdate方法
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+            return "Time Ends";
+        }
+
+        @Override
+        protected void onProgressUpdate(Integer... values) {
+            super.onProgressUpdate(values);
+            tv.setText(values[0] + "");
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
+            super.onPostExecute(s);
+            tv.setText(s);
+        }
     }
 }
 
